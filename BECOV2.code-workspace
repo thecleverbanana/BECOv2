@@ -1,0 +1,20 @@
+{
+  "folders": [
+    {
+      "name": "real_robot",
+      "path": "real_robot"
+    },
+    {
+      "name": "simulation",
+      "path": "simulation"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.pio": true,
+      "**/build": true,
+      "**/install": true,
+      "**/__pycache__": true
+    }
+  }
+}
