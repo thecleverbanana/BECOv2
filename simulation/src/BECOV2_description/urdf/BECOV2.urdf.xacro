@@ -8,13 +8,44 @@
   <xacro:property name="body_height" value="0.05"/>
   <xacro:property name="body_length" value="0.07"/>
   <xacro:property name="body_width" value="0.047"/>
-  <xacro:property name="pipe_length" value="0.06"/> <!-- Updated to match 1cm spacing between bodies -->
+  <xacro:property name="pipe_length" value="0.06"/>
   <xacro:property name="pipe_diameter" value="0.01"/>
   <xacro:property name="slider_length" value="0.06"/>
   <xacro:property name="slider_diameter" value="0.005"/>
   <xacro:property name="actuator_range" value="0.06"/>
   <xacro:property name="mass" value="0.5"/>
   <xacro:property name="body_spacing" value="0.02"/>
+  <xacro:property name="leg_lower_limit" value="0.007554"/>
+  <xacro:property name="leg_upper_limit" value="0.025539"/>
+  <xacro:property name="leg_offset_z" value="${-leg_length/2+0.017554}"/>
+  <xacro:property name="joint_origin_z" value="${-body_height/2 + 0.017554}"/>
+
+  <!-- MACRO for leg -->
+  <xacro:macro name="add_leg" params="side index y_offset">
+    <link name="${side}_leg_link_${index}">
+      <visual>
+        <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
+        <origin xyz="0 0 ${leg_offset_z}"/>
+        <material name="Red"/>
+      </visual>
+      <collision>
+        <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
+        <origin xyz="0 0 ${leg_offset_z}"/>
+      </collision>
+      <inertial>
+        <mass value="0.2"/>
+        <inertia ixx="0.0001" iyy="0.0001" izz="0.0001"/>
+      </inertial>
+    </link>
+
+    <joint name="${side}_leg_joint_${index}" type="prismatic">
+      <parent link="${side}_body_link"/>
+      <child link="${side}_leg_link_${index}"/>
+      <origin xyz="0 ${y_offset} ${joint_origin_z}"/>
+      <axis xyz="0 0 -1"/>
+      <limit lower="${leg_lower_limit}" upper="${leg_upper_limit}" effort="10" velocity="0.5"/>
+    </joint>
+  </xacro:macro>
 
   <!-- Left Body -->
   <link name="left_body_link">
@@ -31,55 +62,9 @@
     </inertial>
   </link>
 
-  <!-- Left Leg  1 -->
-  <link name="left_leg_link">
-    <visual>
-      <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
-      <origin xyz="0 0 ${-leg_length/2+0.017554}"/>
-      <material name="Red"/>
-    </visual>
-    <collision>
-      <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
-      <origin xyz="0 0 ${-leg_length/2+0.017554}"/>
-    </collision>
-    <inertial>
-      <mass value="0.2"/>
-      <inertia ixx="0.0001" iyy="0.0001" izz="0.0001"/>
-    </inertial>
-  </link>
-
-  <joint name="left_leg_joint" type="prismatic">
-    <parent link="left_body_link"/>
-    <child link="left_leg_link"/>
-    <origin xyz="0 -0.015 ${-body_height/2 + 0.017554}"/>
-    <axis xyz="0 0 -1"/>
-    <limit lower="0.007554" upper="0.025539" effort="10" velocity="0.5"/>
-  </joint>
-
-  <!-- Left Leg  2 -->
-  <link name="left_leg_link_2">
-    <visual>
-      <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
-      <origin xyz="0 0 ${-leg_length/2+0.017554}"/>
-      <material name="Red"/>
-    </visual>
-    <collision>
-      <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
-      <origin xyz="0 0 ${-leg_length/2+0.017554}"/>
-    </collision>
-    <inertial>
-      <mass value="0.2"/>
-      <inertia ixx="0.0001" iyy="0.0001" izz="0.0001"/>
-    </inertial>
-  </link>
-
-  <joint name="left_leg_joint_2" type="prismatic">
-    <parent link="left_body_link"/>
-    <child link="left_leg_link_2"/>
-    <origin xyz="0 0 ${-body_height/2 + 0.017554}"/>
-    <axis xyz="0 0 -1"/>
-    <limit lower="0.007554" upper="0.025539" effort="10" velocity="0.5"/>
-  </joint>
+  <!-- Add left legs -->
+  <xacro:add_leg side="left" index="1" y_offset="-0.015"/>
+  <xacro:add_leg side="left" index="2" y_offset="0.015"/>
 
   <!-- Actuator Pipe -->
   <link name="actuator_pipe_link">
@@ -132,11 +117,28 @@
   <!-- Right Body -->
   <link name="right_body_link">
     <visual>
-      <geometry><box size="${body_width} ${body_length} ${body_height}"/></geometry>
-      <material name="Green"/>
+      <geometry><box size="${body_width} ${body_length} ${body_height/2}"/></geometry>
+      <origin xyz="0 0 ${body_height/4}"/>
+    </visual>
+    <visual>
+      <geometry><box size="${body_width} ${body_length/2} ${body_height/2}"/></geometry>
+      <origin xyz="0 ${-body_length/4} ${-body_height/4}"/>
+    </visual>
+    <visual>
+      <geometry><box size="${body_width} ${body_length/2} ${body_height/2}"/></geometry>
+      <origin xyz="0 ${body_length/4} ${-body_height/4}"/>
     </visual>
     <collision>
-      <geometry><box size="${body_width} ${body_length} ${body_height}"/></geometry>
+      <geometry><box size="${body_width} ${body_length} ${body_height/2}"/></geometry>
+      <origin xyz="0 0 ${body_height/4}"/>
+    </collision>
+    <collision>
+      <geometry><box size="${body_width} ${body_length/2} ${body_height/2}"/></geometry>
+      <origin xyz="0 ${-body_length/4} ${-body_height/4}"/>
+    </collision>
+    <collision>
+      <geometry><box size="${body_width} ${body_length/2} ${body_height/2}"/></geometry>
+      <origin xyz="0 ${body_length/4} ${-body_height/4}"/>
     </collision>
     <inertial>
       <mass value="${mass}"/>
@@ -150,30 +152,8 @@
     <origin xyz="${slider_length} 0 ${-(body_height/2)}"/>
   </joint>
 
-  <!-- Right Leg -->
-  <link name="right_leg_link">
-    <visual>
-      <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
-      <origin xyz="0 0 ${-leg_length/2+0.017554}"/>
-      <material name="Red"/>
-    </visual>
-    <collision>
-      <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
-      <origin xyz="0 0 ${-leg_length/2+0.017554}"/>
-    </collision>
-    <inertial>
-      <mass value="0.2"/>
-      <inertia ixx="0.0001" iyy="0.0001" izz="0.0001"/>
-    </inertial>
-  </link>
-
-  <joint name="right_leg_joint" type="prismatic">
-    <parent link="right_body_link"/>
-    <child link="right_leg_link"/>
-    <origin xyz="0 0 ${-body_height/2 + 0.017554}"/>
-    <axis xyz="0 0 -1"/>
-    <limit lower="0.007554" upper="0.025539" effort="10" velocity="0.5"/>
-</joint>
-
+  <!-- Add right legs -->
+  <xacro:add_leg side="right" index="1" y_offset="-0.015"/>
+  <xacro:add_leg side="right" index="2" y_offset="0.015"/>
 
 </robot>
