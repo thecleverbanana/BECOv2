@@ -1,159 +1,69 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="BECOV2">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="my_robot">
 
-  <!-- Basic Property -->
-  <xacro:property name="leg_length" value="0.045"/>
-  <xacro:property name="leg_width" value="0.006"/>
-  <xacro:property name="body_size" value="0.1"/>
-  <xacro:property name="body_height" value="0.05"/>
-  <xacro:property name="body_length" value="0.07"/>
-  <xacro:property name="body_width" value="0.047"/>
-  <xacro:property name="pipe_length" value="0.06"/>
-  <xacro:property name="pipe_diameter" value="0.01"/>
-  <xacro:property name="slider_length" value="0.06"/>
-  <xacro:property name="slider_diameter" value="0.005"/>
-  <xacro:property name="actuator_range" value="0.06"/>
-  <xacro:property name="mass" value="0.5"/>
-  <xacro:property name="body_spacing" value="0.02"/>
-  <xacro:property name="leg_lower_limit" value="0.007554"/>
-  <xacro:property name="leg_upper_limit" value="0.025539"/>
-  <xacro:property name="leg_offset_z" value="${-leg_length/2+0.017554}"/>
-  <xacro:property name="joint_origin_z" value="${-body_height/2 + 0.017554}"/>
-
-  <!-- MACRO for leg -->
-  <xacro:macro name="add_leg" params="side index y_offset">
-    <link name="${side}_leg_link_${index}">
-      <visual>
-        <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
-        <origin xyz="0 0 ${leg_offset_z}"/>
-        <material name="Red"/>
-      </visual>
-      <collision>
-        <geometry><box size="${leg_width} ${leg_width} ${leg_length}"/></geometry>
-        <origin xyz="0 0 ${leg_offset_z}"/>
-      </collision>
-      <inertial>
-        <mass value="0.2"/>
-        <inertia ixx="0.0001" iyy="0.0001" izz="0.0001"/>
-      </inertial>
-    </link>
-
-    <joint name="${side}_leg_joint_${index}" type="prismatic">
-      <parent link="${side}_body_link"/>
-      <child link="${side}_leg_link_${index}"/>
-      <origin xyz="0 ${y_offset} ${joint_origin_z}"/>
-      <axis xyz="0 0 -1"/>
-      <limit lower="${leg_lower_limit}" upper="${leg_upper_limit}" effort="10" velocity="0.5"/>
-    </joint>
-  </xacro:macro>
-
-  <!-- Left Body -->
+  <!-- LEFT BODY (base link) -->
   <link name="left_body_link">
     <visual>
-      <geometry><box size="${body_width} ${body_length} ${body_height}"/></geometry>
-      <material name="Blue"/>
+      <geometry><mesh filename="../meshes/LEFTBODY.stl" scale="0.001 0.001 0.001"/></geometry>
     </visual>
     <collision>
-      <geometry><box size="${body_width} ${body_length} ${body_height}"/></geometry>
+      <geometry><mesh filename="../meshes/LEFTBODY.stl" scale="0.001 0.001 0.001"/></geometry>
     </collision>
-    <inertial>
-      <mass value="${mass}"/>
-      <inertia ixx="0.001" iyy="0.001" izz="0.001"/>
-    </inertial>
   </link>
 
-  <!-- Add left legs -->
-  <xacro:add_leg side="left" index="1" y_offset="-0.015"/>
-  <xacro:add_leg side="left" index="2" y_offset="0.015"/>
-
-  <!-- Actuator Pipe -->
-  <link name="actuator_pipe_link">
-    <visual>
-      <geometry><cylinder radius="${pipe_diameter/2}" length="${pipe_length}"/></geometry>
-      <origin xyz="${pipe_length/2} 0 0" rpy="0 1.5708 0"/>
-      <material name="Gray"/>
-    </visual>
-    <collision>
-      <geometry><cylinder radius="${pipe_diameter/2}" length="${pipe_length}"/></geometry>
-      <origin xyz="${pipe_length/2} 0 0" rpy="0 1.5708 0"/>
-    </collision>
-    <inertial>
-      <mass value="0.2"/>
-      <inertia ixx="0.001" iyy="0.001" izz="0.001"/>
-    </inertial>
-  </link>
-
-  <joint name="pipe_to_left_body_joint" type="fixed">
-    <parent link="left_body_link"/>
-    <child link="actuator_pipe_link"/>
-    <origin xyz="0 0 ${body_height/2}"/>
-  </joint>
-
-  <!-- Actuator Slider -->
-  <link name="actuator_slider_link">
-    <visual>
-      <geometry><cylinder radius="${slider_diameter/2}" length="${slider_length}"/></geometry>
-      <origin xyz="${slider_length/2} 0 0" rpy="0 1.5708 0"/>
-      <material name="Orange"/>
-    </visual>
-    <collision>
-      <geometry><cylinder radius="${slider_diameter/2}" length="${slider_length}"/></geometry>
-      <origin xyz="${slider_length/2} 0 0" rpy="0 1.5708 0"/>
-    </collision>
-    <inertial>
-      <mass value="0.3"/>
-      <inertia ixx="0.001" iyy="0.001" izz="0.001"/>
-    </inertial>
-  </link>
-
-  <joint name="slider_joint" type="prismatic">
-    <parent link="actuator_pipe_link"/>
-    <child link="actuator_slider_link"/>
-    <origin xyz="0 0 0"/>
-    <axis xyz="1 0 0"/>
-    <limit lower="0.0" upper="${actuator_range}" effort="10" velocity="0.5"/>
-  </joint>
-
-  <!-- Right Body -->
+  <!-- RIGHT BODY (fixed to left) -->
   <link name="right_body_link">
     <visual>
-      <geometry><box size="${body_width} ${body_length} ${body_height/2}"/></geometry>
-      <origin xyz="0 0 ${body_height/4}"/>
+      <geometry><mesh filename="../meshes/RIGHTBODY.stl" scale="0.001 0.001 0.001"/></geometry>
     </visual>
-    <visual>
-      <geometry><box size="${body_width} ${body_length/2} ${body_height/2}"/></geometry>
-      <origin xyz="0 ${-body_length/4} ${-body_height/4}"/>
-    </visual>
-    <visual>
-      <geometry><box size="${body_width} ${body_length/2} ${body_height/2}"/></geometry>
-      <origin xyz="0 ${body_length/4} ${-body_height/4}"/>
-    </visual>
-    <collision>
-      <geometry><box size="${body_width} ${body_length} ${body_height/2}"/></geometry>
-      <origin xyz="0 0 ${body_height/4}"/>
-    </collision>
-    <collision>
-      <geometry><box size="${body_width} ${body_length/2} ${body_height/2}"/></geometry>
-      <origin xyz="0 ${-body_length/4} ${-body_height/4}"/>
-    </collision>
-    <collision>
-      <geometry><box size="${body_width} ${body_length/2} ${body_height/2}"/></geometry>
-      <origin xyz="0 ${body_length/4} ${-body_height/4}"/>
-    </collision>
-    <inertial>
-      <mass value="${mass}"/>
-      <inertia ixx="0.001" iyy="0.001" izz="0.001"/>
-    </inertial>
   </link>
 
-  <joint name="slider_to_right_body_joint" type="fixed">
-    <parent link="actuator_slider_link"/>
+  <joint name="fixed_body_joint" type="fixed">
+    <parent link="left_body_link"/>
     <child link="right_body_link"/>
-    <origin xyz="${slider_length} 0 ${-(body_height/2)}"/>
+    <origin xyz="0.06 0 0"/> <!-- adjust based on real spacing -->
   </joint>
 
-  <!-- Add right legs -->
-  <xacro:add_leg side="right" index="1" y_offset="-0.015"/>
-  <xacro:add_leg side="right" index="2" y_offset="0.015"/>
+  <!-- SHAFT -->
+  <link name="shaft_link">
+    <visual>
+      <geometry><mesh filename="../meshes/SHAFT.stl" scale="0.001 0.001 0.001"/></geometry>
+    </visual>
+  </link>
+
+  <joint name="shaft_joint" type="revolute">
+    <parent link="left_body_link"/>
+    <child link="shaft_link"/>
+    <origin xyz="0 0 0"/> <!-- adjust this -->
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="1" velocity="1"/>
+  </joint>
+
+  <!-- ROTATER -->
+  <link name="rotater_link">
+    <visual>
+      <geometry><mesh filename="../meshes/ROTATER.stl" scale="0.001 0.001 0.001"/></geometry>
+    </visual>
+  </link>
+
+  <joint name="rotater_joint" type="fixed">
+    <parent link="shaft_link"/>
+    <child link="rotater_link"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <!-- GEAR (visual only or mimic) -->
+  <link name="gear_link">
+    <visual>
+      <geometry><mesh filename="../meshes/SELFMADEGEAR.stl" scale="0.001 0.001 0.001"/></geometry>
+    </visual>
+  </link>
+
+  <joint name="gear_joint" type="mimic">
+    <parent link="shaft_link"/>
+    <child link="gear_link"/>
+    <origin xyz="0 0 0"/>
+    <mimic joint="shaft_joint" multiplier="-1"/>
+  </joint>
 
 </robot>
