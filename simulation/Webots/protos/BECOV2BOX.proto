@@ -1,0 +1,409 @@
+#VRML_SIM R2025a utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the BECOV2BOX
+# Extracted from: /Users/jerrywu/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Roboland/Multi-Agent/BECOv2/simulation/Webots/urdf/BECOV2.urdf
+
+PROTO BECOV2BOX [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "BECOV2BOX"  # Is `Robot.name`.
+  field  SFString    controller      "becov2_controller"       # Is `Robot.controller`.
+  field  MFString    controllerArgs  []           # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""           # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE        # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE         # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE        # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Pose {
+        translation -0.000360 -0.010430 -0.008490
+        rotation 0.000000 -1.000000 0.000000 1.570800
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF LEFTBODY Mesh {
+              url "../meshes/LEFTBODY.stl"
+            }
+          }
+        ]
+      }
+      SliderJoint {
+        jointParameters JointParameters {
+          axis 0.000000 0.000000 1.000000
+        }
+        device [
+          LinearMotor {
+            name "LEG_LEFT_LEFT_JOINT"
+            maxVelocity 0.1
+            minPosition -0.03
+            maxForce 1.0
+          }
+          PositionSensor {
+            name "LEG_LEFT_LEFT_JOINT_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.024650 -0.030790 -0.044940
+          children [
+            Pose {
+              translation 0.000190 -0.000450 -0.012100
+              rotation 1.000000 0.000000 0.000000 1.570800
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.500000 0.500000 0.500000
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry DEF LEG_LEFT_RIGHT Mesh {
+                    url "../meshes/LEG_LEFT_RIGHT.stl"
+                  }
+                }
+              ]
+            }
+          ]
+          name "VISUAL_LEG_LEFT_LEFT_LINK"
+          boundingObject Group {
+            children [
+              Box {
+                 size 0.006360 0.006740 0.038920
+              }
+              DEF Sphere_001 Mesh {
+                url "../meshes/Sphere.001.stl"
+              }
+            ]
+          }
+          physics Physics {
+            density -1
+            mass 0.001000
+            centerOfMass [ 0.000190 -0.000450 -0.011990 ]
+            inertiaMatrix [
+              1.000000e-03 1.000000e-03 1.000000e-03
+              0.000000e+00 0.000000e+00 0.000000e+00
+            ]
+          }
+        }
+      }
+      SliderJoint {
+        jointParameters JointParameters {
+          axis 0.000000 0.000000 1.000000
+        }
+        device [
+          LinearMotor {
+            name "LEG_LEFT_RIGHT_JOINT"
+            maxVelocity 0.1
+            minPosition -0.03
+            maxForce 1.0
+          }
+          PositionSensor {
+            name "LEG_LEFT_RIGHT_JOINT_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.023720 -0.030790 -0.044940
+          children [
+            Pose {
+              translation -0.000300 -0.000450 -0.012100
+              rotation 1.000000 0.000000 0.000000 1.570800
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.500000 0.500000 0.500000
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry DEF LEG_LEFT_LEFT Mesh {
+                    url "../meshes/LEG_LEFT_LEFT.stl"
+                  }
+                }
+              ]
+            }
+          ]
+          name "VISUAL_LEG_LEFT_RIGHT_LINK"
+          boundingObject Group {
+            children [
+              Box {
+                 size 0.006360 0.006740 0.038920
+              }
+              DEF Sphere_002 Mesh {
+                url "../meshes/Sphere.002.stl"
+              }
+            ]
+          }
+          physics Physics {
+            density -1
+            mass 0.001000
+            centerOfMass [ -0.000300 -0.000450 -0.011990 ]
+            inertiaMatrix [
+              1.000000e-03 1.000000e-03 1.000000e-03
+              0.000000e+00 0.000000e+00 0.000000e+00
+            ]
+          }
+        }
+      }
+      SliderJoint {
+        jointParameters JointParameters {
+          axis 0.000000 1.000000 0.000000
+        }
+        device [
+          LinearMotor {
+            name "SHAFT_JOINT"
+            maxVelocity 0.1
+            maxPosition 0.09
+            maxForce 1.0
+          }
+          PositionSensor {
+            name "SHAFT_JOINT_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.002070 0.067640 0.018660
+          children [
+            Pose {
+              translation -0.000030 -0.003660 -0.001530
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.500000 0.500000 0.500000
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry DEF SHAFT Mesh {
+                    url "../meshes/SHAFT.stl"
+                  }
+                }
+              ]
+            }
+            Solid {
+              translation -0.000670 0.032620 -0.020650
+              children [
+                Pose {
+                  translation 0.001850 -0.016990 -0.021630
+                  rotation -0.707105 -0.000001 -0.707108 3.141591
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.500000 0.500000 0.500000
+                        roughness 1.000000
+                        metalness 0
+                      }
+                      geometry DEF RIGHTBODY Mesh {
+                        url "../meshes/RIGHTBODY.stl"
+                      }
+                    }
+                  ]
+                }
+                SliderJoint {
+                  jointParameters JointParameters {
+                    axis 0.000000 0.000000 1.000000
+                  }
+                  device [
+                    LinearMotor {
+                      name "LEG_RIGHT_LEFT_JOINT"
+                      maxVelocity 0.1
+                      minPosition -0.03
+                      maxForce 1.0
+                    }
+                    PositionSensor {
+                      name "LEG_RIGHT_LEFT_JOINT_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.026460 0.012640 -0.042950
+                    children [
+                      Pose {
+                        translation -0.000300 0.000350 -0.011990
+                        rotation 0.000001 -0.707108 -0.707105 3.141591
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.500000 0.500000 0.500000
+                              roughness 1.000000
+                              metalness 0
+                            }
+                            geometry DEF LEG_RIGHT_RIGHT Mesh {
+                              url "../meshes/LEG_RIGHT_RIGHT.stl"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                    name "VISUAL_LEG_RIGHT_LEFT_LINK"
+                    boundingObject Group {
+                      children [
+                        Box {
+                           size 0.006360 0.006740 0.038920
+                        }
+                        DEF Sphere_004 Mesh {
+                          url "../meshes/Sphere.004.stl"
+                        }
+                      ]
+                    }
+                    physics Physics {
+                      density -1
+                      mass 0.001000
+                      centerOfMass [ -0.000300 0.000350 -0.011990 ]
+                      inertiaMatrix [
+                        1.000000e-03 1.000000e-03 1.000000e-03
+                        0.000000e+00 0.000000e+00 0.000000e+00
+                      ]
+                    }
+                  }
+                }
+                SliderJoint {
+                  jointParameters JointParameters {
+                    axis 0.000000 0.000000 1.000000
+                  }
+                  device [
+                    LinearMotor {
+                      name "LEG_RIGHT_RIGHT_JOINT"
+                      maxVelocity 0.1
+                      minPosition -0.03
+                      maxForce 1.0
+                    }
+                    PositionSensor {
+                      name "LEG_RIGHT_RIGHT_JOINT_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation -0.021900 0.012640 -0.042950
+                    children [
+                      Pose {
+                        translation 0.000190 0.000350 -0.011990
+                        rotation 0.000001 -0.707108 -0.707105 3.141591
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.500000 0.500000 0.500000
+                              roughness 1.000000
+                              metalness 0
+                            }
+                            geometry DEF LEG_RIGHT_RIGHT_001 Mesh {
+                              url "../meshes/LEG_RIGHT_RIGHT.001.stl"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                    name "VISUAL_LEG_RIGHT_RIGHT_LINK"
+                    boundingObject Group {
+                      children [
+                        Box {
+                           size 0.006360 0.006740 0.038920
+                        }
+                        DEF Sphere_003 Mesh {
+                          url "../meshes/Sphere.003.stl"
+                        }
+                      ]
+                    }
+                    physics Physics {
+                      density -1
+                      mass 0.001000
+                      centerOfMass [ 0.000190 0.000350 -0.011990 ]
+                      inertiaMatrix [
+                        1.000000e-03 1.000000e-03 1.000000e-03
+                        0.000000e+00 0.000000e+00 0.000000e+00
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "VISUAL_RIGHTBODY_LINK"
+              boundingObject Group {
+                children [
+                  Box {
+                     size 0.070560 0.064650 0.022890
+                  }
+                  Box {
+                     size 0.023040 0.064650 0.037850
+                  }
+                  Box {
+                     size 0.006360 0.064650 0.037850
+                  }
+                  Box {
+                     size 0.006360 0.064650 0.037850
+                  }
+                  Box {
+                     size 0.006360 0.064650 0.037850
+                  }
+                  Box {
+                     size 0.006360 0.064650 0.037850
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.001000
+                centerOfMass [ 0.001850 -0.016990 0.019120 ]
+                inertiaMatrix [
+                  1.000000e-03 1.000000e-03 1.000000e-03
+                  0.000000e+00 0.000000e+00 0.000000e+00
+                ]
+              }
+            }
+          ]
+          name "VISUAL_SHAFT_LINK"
+          boundingObject Box {
+             size 0.011400 0.116690 0.011400
+          }
+          physics Physics {
+            density -1
+            mass 0.001000
+            centerOfMass [ -0.000030 -0.003660 -0.001530 ]
+            inertiaMatrix [
+              1.000000e-03 1.000000e-03 1.000000e-03
+              0.000000e+00 0.000000e+00 0.000000e+00
+            ]
+          }
+        }
+      }
+    ]
+    name IS name
+    boundingObject Group {
+      children [
+        Box {
+           size 0.070560 0.064650 0.022890
+        }
+        Box {
+           size 0.023040 0.064650 0.037850
+        }
+        Box {
+           size 0.006360 0.064650 0.037850
+        }
+        Box {
+           size 0.006360 0.064650 0.037850
+        }
+        Box {
+           size 0.006360 0.064650 0.037850
+        }
+        Box {
+           size 0.006360 0.064650 0.037850
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 0.001000
+      centerOfMass [ -0.000360 -0.010430 -0.008490 ]
+      inertiaMatrix [
+        1.000000e-03 1.000000e-03 1.000000e-03
+        0.000000e+00 0.000000e+00 0.000000e+00
+      ]
+    }
+  }
+}

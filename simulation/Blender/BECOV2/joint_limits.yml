@@ -1,0 +1,63 @@
+{
+  "limits": {
+    "elements": [
+      {
+        "max": {
+          "effort": 1.0,
+          "position": 0.0,
+          "speed": 0.0
+        },
+        "min": {
+          "position": -25.0
+        }
+      },
+      {
+        "max": {
+          "effort": 1.0,
+          "position": 0.0,
+          "speed": 0.0
+        },
+        "min": {
+          "position": -25.0
+        }
+      },
+      {
+        "max": {
+          "effort": 1.0,
+          "position": 0.0,
+          "speed": 0.0
+        },
+        "min": {
+          "position": -25.0
+        }
+      },
+      {
+        "max": {
+          "effort": 1.0,
+          "position": 0.0,
+          "speed": 0.0
+        },
+        "min": {
+          "position": -25.0
+        }
+      },
+      {
+        "max": {
+          "effort": 1.0,
+          "position": 100.0,
+          "speed": 0.0
+        },
+        "min": {
+          "position": 0.0
+        }
+      }
+    ],
+    "names": [
+      "LEG_LEFT_LEFT_JOINT",
+      "LEG_LEFT_RIGHT_JOINT",
+      "LEG_RIGHT_LEFT_JOINT",
+      "LEG_RIGHT_RIGHT_JOINT",
+      "SHAFT_JOINT"
+    ]
+  }
+}

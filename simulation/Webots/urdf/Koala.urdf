@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<robot name="/Users/jerrywu/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Roboland/Multi-Agent/BECOv2/simulation/BECOV2_ws/urdf/Koala.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <origin xyz="0.025 0 0.105" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.15 0.2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.025 0 0.105" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.15 0.2"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.01 0 0.105" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.23 0.28 0.2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.01 0 0.105" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.23 0.28 0.2"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.105 -0.07 0.105" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.105 -0.07 0.105" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.2"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.105 0.07 0.105" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.105 0.07 0.105" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.2"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="ds15">
+  </link>
+  <joint name="base_link_ds15_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds15"/>
+    <origin xyz="0.175 0.015 0.102" rpy="1.570807 -0.000005 0.100001"/>
+  </joint>
+  <link name="ds14">
+  </link>
+  <joint name="base_link_ds14_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds14"/>
+    <origin xyz="0.169 0.04 0.102" rpy="1.570806 -0.000005 0.2"/>
+  </joint>
+  <link name="ds13">
+  </link>
+  <joint name="base_link_ds13_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds13"/>
+    <origin xyz="0.16 0.07 0.102" rpy="1.570806 -0.000007 0.300001"/>
+  </joint>
+  <link name="ds12">
+  </link>
+  <joint name="base_link_ds12_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds12"/>
+    <origin xyz="0.14 0.125 0.102" rpy="1.570801 -0.00001 0.8"/>
+  </joint>
+  <link name="ds11">
+  </link>
+  <joint name="base_link_ds11_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds11"/>
+    <origin xyz="0.055 0.14 0.102" rpy="1.570793 -0.000011 1.57079"/>
+  </joint>
+  <link name="ds10">
+  </link>
+  <joint name="base_link_ds10_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds10"/>
+    <origin xyz="-0.05 0.14 0.102" rpy="1.570793 -0.00001 1.57099"/>
+  </joint>
+  <link name="ds9">
+  </link>
+  <joint name="base_link_ds9_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds9"/>
+    <origin xyz="-0.12 0.125 0.102" rpy="1.570787 -0.000005 2.352385"/>
+  </joint>
+  <link name="ds8">
+  </link>
+  <joint name="base_link_ds8_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds8"/>
+    <origin xyz="-0.13 0.0475 0.107" rpy="1.570786 0.000005 3.141587"/>
+  </joint>
+  <link name="ds7">
+  </link>
+  <joint name="base_link_ds7_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds7"/>
+    <origin xyz="-0.13 -0.0475 0.107" rpy="1.570786 0.000005 3.141587"/>
+  </joint>
+  <link name="ds6">
+  </link>
+  <joint name="base_link_ds6_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds6"/>
+    <origin xyz="-0.12 -0.125 0.102" rpy="1.57079 0.00001 -2.4232"/>
+  </joint>
+  <link name="ds5">
+  </link>
+  <joint name="base_link_ds5_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds5"/>
+    <origin xyz="-0.05 -0.14 0.102" rpy="1.5708 0.00001 -1.5708"/>
+  </joint>
+  <link name="ds4">
+  </link>
+  <joint name="base_link_ds4_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds4"/>
+    <origin xyz="0.055 -0.14 0.102" rpy="1.5708 0.00001 -1.5708"/>
+  </joint>
+  <link name="ds3">
+  </link>
+  <joint name="base_link_ds3_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds3"/>
+    <origin xyz="0.14 -0.12 0.102" rpy="1.570806 0.000005 -0.800003"/>
+  </joint>
+  <link name="ds2">
+  </link>
+  <joint name="base_link_ds2_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds2"/>
+    <origin xyz="0.16 -0.07 0.102" rpy="1.570808 0 -0.3"/>
+  </joint>
+  <link name="ds1">
+  </link>
+  <joint name="base_link_ds1_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds1"/>
+    <origin xyz="0.169 -0.04 0.102" rpy="1.570807 -0.000001 -0.2"/>
+  </joint>
+  <link name="ds0">
+  </link>
+  <joint name="base_link_ds0_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds0"/>
+    <origin xyz="0.175 -0.015 0.102" rpy="1.570807 -0.000002 -0.1"/>
+  </joint>
+  <link name="wheel(6)">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_wheel(6)_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel(6)"/>
+    <origin xyz="-0.09 -0.1425 0.0425" rpy="1.5708 0.00001 -1.5708"/>
+  </joint>
+  <joint name="right wheel motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel(5)"/>
+    <axis xyz="-1 0.000007 -0.000007"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0 0 0.0425" rpy="-1.100522 0.00001 -1.5708"/>
+  </joint>
+  <link name="wheel(5)">
+    <visual>
+      <origin xyz="0.1425 -0.000001 0.000001" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.1425 -0.000001 0.000001" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="wheel(4)">
+    <visual>
+      <origin xyz="0.1425 -0.000001 0.000001" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.1425 -0.000001 0.000001" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_wheel(4)_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel(4)"/>
+    <origin xyz="0.2325 -0.142501 0.042501" rpy="1.5708 0.00001 -1.5708"/>
+  </joint>
+  <link name="wheel(3)">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_wheel(3)_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel(3)"/>
+    <origin xyz="-0.09 0.1425 0.0425" rpy="1.5708 0.00001 -1.5708"/>
+  </joint>
+  <joint name="left wheel motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel(2)"/>
+    <axis xyz="-1 -0.000002 -0.00001"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0 0 0.0425" rpy="-0.184141 0.00001 -1.5708"/>
+  </joint>
+  <link name="wheel(2)">
+    <visual>
+      <origin xyz="-0.1425 0 -0.000001" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.1425 0 -0.000001" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="wheel(1)">
+    <visual>
+      <origin xyz="-0.1425 0 -0.000001" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.1425 0 -0.000001" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.0425" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_wheel(1)_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel(1)"/>
+    <origin xyz="-0.0525 0.1425 0.042499" rpy="1.5708 0.00001 -1.5708"/>
+  </joint>
+</robot>

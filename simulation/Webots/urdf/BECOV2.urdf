@@ -1,0 +1,259 @@
+<robot name="BECOV2" version="1.0">
+  <joint name="LEG_LEFT_LEFT_JOINT" type="prismatic">
+    <limit lower="-0.0300" upper="0.00000" effort="1.00000" velocity="0.10000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.02465 -0.03079 -0.04494"/>
+    <parent link="VISUAL_LEFTBODY_LINK"/>
+    <child link="VISUAL_LEG_LEFT_LEFT_LINK"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="LEG_LEFT_RIGHT_JOINT" type="prismatic">
+    <limit lower="-0.0300" upper="0.00000" effort="1.00000" velocity="0.10000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.02372 -0.03079 -0.04494"/>
+    <parent link="VISUAL_LEFTBODY_LINK"/>
+    <child link="VISUAL_LEG_LEFT_RIGHT_LINK"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="LEG_RIGHT_LEFT_JOINT" type="prismatic">
+    <limit lower="-0.0300" upper="0.00000" effort="1.00000" velocity="0.10000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.02646 0.01264 -0.04295"/>
+    <parent link="VISUAL_RIGHTBODY_LINK"/>
+    <child link="VISUAL_LEG_RIGHT_LEFT_LINK"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="LEG_RIGHT_RIGHT_JOINT" type="prismatic">
+    <limit lower="-0.0300" upper="0.00000" effort="1.00000" velocity="0.10000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.02190 0.01264 -0.04295"/>
+    <parent link="VISUAL_RIGHTBODY_LINK"/>
+    <child link="VISUAL_LEG_RIGHT_RIGHT_LINK"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="RIGHTBODY_JOINT" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00067 0.03262 -0.02065"/>
+    <parent link="VISUAL_SHAFT_LINK"/>
+    <child link="VISUAL_RIGHTBODY_LINK"/>
+  </joint>
+  <joint name="SHAFT_JOINT" type="prismatic">
+    <limit lower="0.00000" upper="0.09000" effort="1.00000" velocity="0.10000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00207 0.06764 0.01866"/>
+    <parent link="VISUAL_LEFTBODY_LINK"/>
+    <child link="VISUAL_SHAFT_LINK"/>
+    <axis xyz="0.00000 1.00000 0.00000"/>
+  </joint>
+  <link name="VISUAL_LEFTBODY_LINK">
+    <collision name="LEFTBODYC1">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00043 -0.01087 -0.00050"/>
+      <geometry>
+        <box size="0.07056 0.06465 0.02289"/>
+      </geometry>
+    </collision>
+    <collision name="LEFTBODYC2">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00043 -0.01093 -0.03282"/>
+      <geometry>
+        <box size="0.02304 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <collision name="LEFTBODYC3">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.03262 -0.01093 -0.03282"/>
+      <geometry>
+        <box size="0.00636 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <collision name="LEFTBODYC4">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.01675 -0.01093 -0.03282"/>
+      <geometry>
+        <box size="0.00636 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <collision name="LEFTBODYC5">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.01559 -0.01093 -0.03282"/>
+      <geometry>
+        <box size="0.00636 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <collision name="LEFTBODYC6">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.03146 -0.01093 -0.03282"/>
+      <geometry>
+        <box size="0.00636 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00036 -0.01043 -0.00849"/>
+      <mass value="0.00100"/>
+    </inertial>
+    <visual name="LEFTBODY_VISUAL">
+      <origin rpy="0.00000 -1.57080 0.00000" xyz="-0.00036 -0.01043 -0.00849"/>
+      <geometry>
+        <mesh filename="../meshes/LEFTBODY.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="VISUAL_LEG_LEFT_LEFT_LINK">
+    <collision name="LEG_LEFT_LEFTC1">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00023 -0.00038 0.00817"/>
+      <geometry>
+        <box size="0.00636 0.00674 0.03892"/>
+      </geometry>
+    </collision>
+    <collision name="LEG_LEFT_LEFTC2">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00019 -0.00045 -0.01436"/>
+      <geometry>
+        <mesh filename="../meshes/Sphere.001.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00019 -0.00045 -0.01199"/>
+      <mass value="0.00100"/>
+    </inertial>
+    <visual name="LEG_LEFT_LEFT_VISUAL">
+      <origin rpy="1.57080 0.00000 0.00000" xyz="0.00019 -0.00045 -0.01210"/>
+      <geometry>
+        <mesh filename="../meshes/LEG_LEFT_RIGHT.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="VISUAL_LEG_LEFT_RIGHT_LINK">
+    <collision name="LEG_LEFT_RIGHTC1">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00045 -0.00038 0.00817"/>
+      <geometry>
+        <box size="0.00636 0.00674 0.03892"/>
+      </geometry>
+    </collision>
+    <collision name="LEG_LEFT_RIGHTC2">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00041 -0.00045 -0.01436"/>
+      <geometry>
+        <mesh filename="../meshes/Sphere.002.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00030 -0.00045 -0.01199"/>
+      <mass value="0.00100"/>
+    </inertial>
+    <visual name="LEG_LEFT_RIGHT_VISUAL">
+      <origin rpy="1.57080 0.00000 0.00000" xyz="-0.00030 -0.00045 -0.01210"/>
+      <geometry>
+        <mesh filename="../meshes/LEG_LEFT_LEFT.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="VISUAL_LEG_RIGHT_LEFT_LINK">
+    <collision name="LEG_RIGHT_LEFTC1">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.00024 0.00047 0.00817"/>
+      <geometry>
+        <box size="0.00636 0.00674 0.03892"/>
+      </geometry>
+    </collision>
+    <collision name="LEG_RIGHT_LEFTC2">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.00027 0.00041 -0.01436"/>
+      <geometry>
+        <mesh filename="../meshes/Sphere.004.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00030 0.00035 -0.01199"/>
+      <mass value="0.00100"/>
+    </inertial>
+    <visual name="LEG_RIGHT_LEFT_VISUAL">
+      <origin rpy="1.57080 -0.00000 -3.14159" xyz="-0.00030 0.00035 -0.01199"/>
+      <geometry>
+        <mesh filename="../meshes/LEG_RIGHT_RIGHT.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="VISUAL_LEG_RIGHT_RIGHT_LINK">
+    <collision name="LEG_RIGHT_RIGHTC1">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00023 0.00047 0.00817"/>
+      <geometry>
+        <box size="0.00636 0.00674 0.03892"/>
+      </geometry>
+    </collision>
+    <collision name="LEG_RIGHT_RIGHTC2">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00019 0.00041 -0.01436"/>
+      <geometry>
+        <mesh filename="../meshes/Sphere.003.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00019 0.00035 -0.01199"/>
+      <mass value="0.00100"/>
+    </inertial>
+    <visual name="LEG_RIGHT_RIGHT_VISUAL">
+      <origin rpy="1.57080 -0.00000 -3.14159" xyz="0.00019 0.00035 -0.01199"/>
+      <geometry>
+        <mesh filename="../meshes/LEG_RIGHT_RIGHT.001.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="VISUAL_RIGHTBODY_LINK">
+    <collision name="RIGHTBODYC1">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00232 -0.00400 0.00149"/>
+      <geometry>
+        <box size="0.07056 0.06465 0.02289"/>
+      </geometry>
+    </collision>
+    <collision name="RIGHTBODYC2">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00232 -0.00412 -0.03084"/>
+      <geometry>
+        <box size="0.02304 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <collision name="RIGHTBODYC3">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.02988 -0.00412 -0.03084"/>
+      <geometry>
+        <box size="0.00636 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <collision name="RIGHTBODYC4">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.01401 -0.00412 -0.03084"/>
+      <geometry>
+        <box size="0.00636 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <collision name="RIGHTBODYC5">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.01834 -0.00412 -0.03084"/>
+      <geometry>
+        <box size="0.00636 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <collision name="RIGHTBODYC6">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.03421 -0.00412 -0.03084"/>
+      <geometry>
+        <box size="0.00636 0.06465 0.03785"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00185 -0.01699 0.01912"/>
+      <mass value="0.00100"/>
+    </inertial>
+    <visual name="RIGHTBODY_VISUAL">
+      <origin rpy="-3.14159 -1.57080 0.00000" xyz="0.00185 -0.01699 -0.02163"/>
+      <geometry>
+        <mesh filename="../meshes/RIGHTBODY.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="VISUAL_SHAFT_LINK">
+    <collision name="SHAFTC1">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00009 -0.00797 -0.00153"/>
+      <geometry>
+        <box size="0.01140 0.11669 0.01140"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00100" ixy="0.00000" ixz="0.00000" iyy="0.00100" iyz="0.00000" izz="0.00100"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00003 -0.00366 -0.00153"/>
+      <mass value="0.00100"/>
+    </inertial>
+    <visual name="SHAFT_VISUAL">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00003 -0.00366 -0.00153"/>
+      <geometry>
+        <mesh filename="../meshes/SHAFT.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>

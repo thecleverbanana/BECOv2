@@ -1,0 +1,3 @@
+Instantiated with filepath=None->None, scale=[1.0, 1.0, 1.0], mesh=<bpy_struct, Mesh("LEFTBODY") at 0x3229ec620>, meshname=LEFTBODY, material=None, mesh_orientation=None, {}
+->trying export of <bpy_struct, Mesh("LEFTBODY") at 0x3229ec620> to /Users/jerrywu/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Roboland/Multi-Agent/BECOv2/simulation/Blender/BECOV2/meshes/stl/LEFTBODY.stl
+->wrote stl to /Users/jerrywu/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Roboland/Multi-Agent/BECOv2/simulation/Blender/BECOV2/meshes/stl/LEFTBODY.stl from bpy_types.Mesh
