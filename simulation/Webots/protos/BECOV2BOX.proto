@@ -5,7 +5,7 @@
 # Extracted from: /Users/jerrywu/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Roboland/Multi-Agent/BECOv2/simulation/Webots/urdf/BECOV2.urdf
 
 PROTO BECOV2BOX [
-  field  SFVec3f     translation     0 0 0
+  field  SFVec3f     translation     0 0 0.88
   field  SFRotation  rotation        0 0 1 0
   field  SFString    name            "BECOV2BOX"  # Is `Robot.name`.
   field  SFString    controller      "becov2_controller"       # Is `Robot.controller`.
@@ -90,7 +90,7 @@ PROTO BECOV2BOX [
           }
           physics Physics {
             density -1
-            mass 0.001000
+            mass 0.00500
             centerOfMass [ 0.000190 -0.000450 -0.011990 ]
             inertiaMatrix [
               1.000000e-03 1.000000e-03 1.000000e-03
@@ -147,7 +147,7 @@ PROTO BECOV2BOX [
           }
           physics Physics {
             density -1
-            mass 0.001000
+            mass 0.00500
             centerOfMass [ -0.000300 -0.000450 -0.011990 ]
             inertiaMatrix [
               1.000000e-03 1.000000e-03 1.000000e-03
@@ -256,7 +256,7 @@ PROTO BECOV2BOX [
                     }
                     physics Physics {
                       density -1
-                      mass 0.001000
+                      mass 0.005000
                       centerOfMass [ -0.000300 0.000350 -0.011990 ]
                       inertiaMatrix [
                         1.000000e-03 1.000000e-03 1.000000e-03
@@ -313,7 +313,7 @@ PROTO BECOV2BOX [
                     }
                     physics Physics {
                       density -1
-                      mass 0.001000
+                      mass 0.005000
                       centerOfMass [ 0.000190 0.000350 -0.011990 ]
                       inertiaMatrix [
                         1.000000e-03 1.000000e-03 1.000000e-03
@@ -348,7 +348,7 @@ PROTO BECOV2BOX [
               }
               physics Physics {
                 density -1
-                mass 0.001000
+                mass 0.07000
                 centerOfMass [ 0.001850 -0.016990 0.019120 ]
                 inertiaMatrix [
                   1.000000e-03 1.000000e-03 1.000000e-03
@@ -363,11 +363,11 @@ PROTO BECOV2BOX [
           }
           physics Physics {
             density -1
-            mass 0.001000
+            mass 0.01000
             centerOfMass [ -0.000030 -0.003660 -0.001530 ]
             inertiaMatrix [
-              1.000000e-03 1.000000e-03 1.000000e-03
-              0.000000e+00 0.000000e+00 0.000000e+00
+               1.000000e-03 1.000000e-03 1.000000e-03
+               0.000000e+00 0.000000e+00 0.000000e+00
             ]
           }
         }
@@ -398,7 +398,7 @@ PROTO BECOV2BOX [
     }
     physics Physics {
       density -1
-      mass 0.001000
+      mass 0.050000
       centerOfMass [ -0.000360 -0.010430 -0.008490 ]
       inertiaMatrix [
         1.000000e-03 1.000000e-03 1.000000e-03
