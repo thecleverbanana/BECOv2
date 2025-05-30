@@ -1,9 +1,21 @@
 terrain1: 
-Radius(2.5cm) Gap(0cm) Material(https://www.blenderkit.com/asset-gallery-detail/c4753fb1-56d4-4eba-94b4-b5ed66a989b3/) Ground(https://www.blenderkit.com/asset-gallery-detail/ce0f994a-a4bb-455c-9823-b82eba074a72/)
+32-Vertex Cyliner Radius(2.5cm) Gap(0cm) Material(https://www.blenderkit.com/asset-gallery-detail/c4753fb1-56d4-4eba-94b4-b5ed66a989b3/) Ground(https://www.blenderkit.com/asset-gallery-detail/ce0f994a-a4bb-455c-9823-b82eba074a72/)
 
 terrain2: 
-Radius(2.5cm) Gap(1cm) Material(https://www.blenderkit.com/asset-gallery-detail/c4753fb1-56d4-4eba-94b4-b5ed66a989b3/) Ground(https://www.blenderkit.com/asset-gallery-detail/ce0f994a-a4bb-455c-9823-b82eba074a72/)
+32-Vertex Cyliner Radius(2.5cm) Gap(1cm) Material(https://www.blenderkit.com/asset-gallery-detail/c4753fb1-56d4-4eba-94b4-b5ed66a989b3/) Ground(https://www.blenderkit.com/asset-gallery-detail/ce0f994a-a4bb-455c-9823-b82eba074a72/)
 
 terrain3: 
-Radius(2.5cm) Gap(2.5cm) Material(https://www.blenderkit.com/asset-gallery-detail/c4753fb1-56d4-4eba-94b4-b5ed66a989b3/) Ground(https://www.blenderkit.com/asset-gallery-detail/ce0f994a-a4bb-455c-9823-b82eba074a72/)
+32-Vertex Cyliner Radius(2.5cm) Gap(2.5cm) Material(https://www.blenderkit.com/asset-gallery-detail/c4753fb1-56d4-4eba-94b4-b5ed66a989b3/) Ground(https://www.blenderkit.com/asset-gallery-detail/ce0f994a-a4bb-455c-9823-b82eba074a72/)
+
+terrain4: 
+3-Vertex Cyliner (Triangular prism) Radius(2.5cm) Gap(0cm)
+
+terrain5: 
+3-Vertex Cyliner (Triangular prism) Radius(2.5cm) Gap(16.7cm)
+
+terrain6: 
+3-Vertex Cyliner (Triangular prism) Radius(2.5cm) Gap(5cm)
+
+terrain6: 
+3-Vertex Cyliner (Triangular prism) Radius(1.5cm) Gap(5cm)
 

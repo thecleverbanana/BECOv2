@@ -3,6 +3,7 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "../protos/BECOV2.proto"
 
 WorldInfo {
   info [
@@ -19,74 +20,12 @@ TexturedBackgroundLight {
 }
 Floor {
 }
-Solid {
-  translation -1.5 -1.5 0 
-  rotation 1 0 0 1.5708
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.2 0.2 1.0
-        roughness 0.5
-        metalness 0.0
-      }
-      geometry Mesh {
-        url "../../Blender/Terrain/terrain1/terrain1.obj"
-      }
-    }
-  ]
-  boundingObject Mesh {
-    url "../../Blender/Terrain/terrain1/terrain1.obj"
-  }
-  physics Physics {
-    mass 1
-  }
-  name "Terrain1"
+
+BECOV2 {
+  translation 0 0 0
+  rotation 0 0 0 0
+  controller "becov2_controller"
 }
 
-Solid {
-  translation -1.5 1.5 0 
-  rotation 1 0 0 1.5708
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.4 0.7 0.4
-        roughness 0.5
-        metalness 0.0
-      }
-      geometry Mesh {
-        url "../../Blender/Terrain/terrain2/terrain2.obj"
-      }
-    }
-  ]
-  boundingObject Mesh {
-    url "../../Blender/Terrain/terrain2/terrain2.obj"
-  }
-  physics Physics {
-    mass 1
-  }
-  name "Terrain2"
-}
 
-Solid {
-  translation 1.5 -1.5 0.0 
-  rotation 1 0 0 1.5708
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.9 0.85 0.5
-        roughness 0.5
-        metalness 0.0
-      }
-      geometry Mesh {
-        url "../../Blender/Terrain/terrain3/terrain3.obj"
-      }
-    }
-  ]
-  boundingObject Mesh {
-    url "../../Blender/Terrain/terrain3/terrain3.obj"
-  }
-  physics Physics {
-    mass 1
-  }
-  name "Terrain3"
-}
+

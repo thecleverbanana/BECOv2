@@ -6,3 +6,28 @@ python3 -m urdf2webots.importer \
   --normal
 
 
+# Solid format in world
+
+Solid {
+  translation 0 0 0 
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.2 1.0
+        roughness 0.5
+        metalness 0.0
+      }
+      geometry Mesh {
+        url "../../Blender/Terrain/terrain7/terrain7.obj"
+      }
+    }
+  ]
+  boundingObject Mesh {
+    url "../../Blender/Terrain/terrain7/terrain7.obj"
+  }
+  physics Physics {
+    mass 10
+  }
+  name "Terrain7"
+}
