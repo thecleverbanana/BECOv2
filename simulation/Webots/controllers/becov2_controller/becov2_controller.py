@@ -36,7 +36,7 @@ def execute_phase(phase):
     if phase == 0:
         print("Phase 0: Reset all joints")
         set_leg_positions(0.0, 0.0, 0.0, 0.0)
-        shaft_target = 0.0
+        # shaft_target = 0.0
 
     elif phase == 1:
         print("Phase 1: Left legs extended")

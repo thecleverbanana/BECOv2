@@ -21,11 +21,40 @@ TexturedBackgroundLight {
 Floor {
 }
 
-BECOV2 {
-  translation 0 0 0
-  rotation 0 0 0 0
-  controller "becov2_controller"
+Solid {
+  translation 0 0 0 
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.1 1.0 0.8
+        roughness 0.7
+        metalness 0.0
+      }
+      geometry Mesh {
+        url "../../Blender/Terrain/terrain8/terrain8.obj"
+      }
+    }
+  ]
+  boundingObject Mesh {
+    url "../../Blender/Terrain/terrain8/terrain8.obj"
+  }
+  physics Physics {
+    mass 10
+  }
+  name "Terrain8"
 }
 
+DEF BECOV2_INSTANCE BECOV2 {
+  translation 0 0 0
+  rotation 0 0 1 1.5708
+  controller "becov2_controller"
+  name "BECOV2_INSTANCE"
+}
 
+Robot {
+  name "trajectory_supervisor"
+  supervisor TRUE
+  controller "becov2_supervisor"
+}
 
