@@ -368,11 +368,63 @@ By friction function \(\left| f \right| \leq \mu N\), we can solve this equation
     \leq \mu \cdot \frac{g m (X_A - X_{\text{COM}}) \cos\theta_2}{X_A - X_B} = \mu N_B
 \end{align*}
 
-\begin{note}
+% \begin{note}
     The above expression is derived in case where the \(\theta_1\) and \(\theta_2\) are both acute angles from graphic
-    definition, but it is clear that in other cases, similar genral expression can also be formulated.
-\end{note}
+    definition, but it is clear that in other cases, they are the same, a even more genral expression is actually:
+% \end{note}
     
+
+\begin{align*}
+    \vec{f}_1 &= f_1 \cdot \hat{t}_1 \\
+    \vec{N}_A &= N_A \cdot \hat{n}_1 \\
+    \vec{f}_2 &= f_2 \cdot \hat{t}_2 \\
+    \vec{N}_B &= N_B \cdot \hat{n}_2 \\
+    \vec{W}   &= -mg \cdot (0,\; 1) \\
+\end{align*}
+\begin{align*}
+    \sum F_x &= f_1 t_{1x} + f_2 t_{2x} + N_A n_{1x} + N_B n_{2x} = 0 \\
+    \sum F_y &= f_1 t_{1y} + f_2 t_{2y} + N_A n_{1y} + N_B n_{2y} - mg = 0 \\
+    \sum M_A &= 
+    (x_B - x_A)(f_2 t_{2y} + N_B n_{2y}) - (y_B - y_A)(f_2 t_{2x} + N_B n_{2x}) \notag \\
+    &\quad - mg (x_{COM} - x_A) = 0 \\
+    \sum M_B &= 
+    (x_A - x_B)(f_1 t_{1y} + N_A n_{1y}) - (y_A - y_B)(f_1 t_{1x} + N_A n_{1x}) \notag \\
+    &\quad - mg (x_{COM} - x_B) = 0
+\end{align*}
+In matrix form: 
+\begin{align*}
+    \scriptsize
+    \left[
+    \begin{array}{cccc}
+    t_{1x} & t_{2x} & n_{1x} & n_{2x} \\
+    t_{1y} & t_{2y} & n_{1y} & n_{2y} \\
+    0 & \Delta x_{BA} t_{2y} - \Delta y_{BA} t_{2x} 
+      & 0 & \Delta x_{BA} n_{2y} - \Delta y_{BA} n_{2x} \\
+    \Delta x_{AB} t_{1y} - \Delta y_{AB} t_{1x} 
+      & 0 & \Delta x_{AB} n_{1y} - \Delta y_{AB} n_{1x} 
+      & 0
+    \end{array}
+    \right]
+    \cdot
+    \begin{bmatrix}
+    f_1 \\ f_2 \\ N_A \\ N_B
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    0 \\
+    mg \\
+    mg (x_{\text{COM}} - x_A) \\
+    mg (x_{\text{COM}} - x_B)
+    \end{bmatrix}
+    \normalsize
+\end{align*}
+    
+\paragraph{Friction Cone Constraints}
+\[
+|\vec{f}_1| \leq \mu |N_A|, \quad 
+|\vec{f}_2| \leq \mu |N_B|
+\]
+
 \subsection*{Cylinder Terrain}
 
 \begin{diagram}
@@ -518,6 +570,11 @@ on \(c_1\) and \(c_2\) and their angle.
     \item Direction angle of $\vec{AP}$ is known: $\psi \in [0, 2\pi]$ from pitch angle \(\beta\).
 \end{itemize}
 
+\begin{note}
+    To be more specific, direction angle is derived from both the geometric angle formed by triangle
+    ABP and \(\beta\) .
+\end{note}
+
 Then the direction vector is:
 \[
 \vec{d} = \vec{AP} = L(\cos \psi, \sin \psi)
@@ -547,13 +604,34 @@ Once $A$ is solved, compute:
 P &= A + L(\cos \psi, \sin \psi)
 \end{align*}
 
-Then, compute angle between $\vec{AP}$ and circle normals:
-\begin{align*}
-\theta_1 &= \arccos\left( \frac{(P - A) \cdot (A - C_1)}{L \cdot r} \right) \\
-\theta_2 &= \arccos\left( \frac{(A - P) \cdot (P - C_2)}{L \cdot r} \right)
-\end{align*}
+Then, compute the angle between the \textbf{tangent direction} at the contact points and the ground (i.e., the horizontal x-axis). The tangent direction at a point on a circle is perpendicular to the radial vector from the circle's center to that point.
 
-These give the angles between the link $AP$ and the local radial directions at points $A$ and $P$.
+Let the centers of the circles be $C_1 = (x_1, y_1)$ and $C_2 = (x_2, y_2)$, and the contact points be $A = (x_A, y_A)$ and $P = (x_P, y_P)$. The radial vectors are:
+
+\[
+\vec{n}_1 = A - C_1 = (x_A - x_1,\ y_A - y_1), \quad
+\vec{n}_2 = P - C_2 = (x_P - x_2,\ y_P - y_2)
+\]
+
+The corresponding tangent vectors (obtained by rotating the radial vectors 90° clockwise) are:
+
+\[
+\vec{t}_1 = (-(y_A - y_1),\ x_A - x_1), \quad
+\vec{t}_2 = (-(y_P - y_2),\ x_P - x_2)
+\]
+
+The angles between the tangent vectors at the contact points and the ground (horizontal axis) are given by:
+
+\[
+\theta_1 = \mathrm{mod}\left( \arctan2(t_{1,y},\ t_{1,x}),\ 2\pi \right)
+\]
+\[
+\theta_2 = \mathrm{mod}\left( \arctan2(t_{2,y},\ t_{2,x}),\ 2\pi \right)
+\]
+
+These angles represent the \textbf{oriented direction} of the tangents relative to the ground, measured counterclockwise from the positive \(x\)-axis and wrapped into the interval \([0,\ 2\pi)\).
+
+
 
 \subsubsection*{Case2}
 

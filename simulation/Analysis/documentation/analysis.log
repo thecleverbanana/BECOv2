@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  2 JUN 2025 16:12
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  3 JUN 2025 22:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/jerrywu/Desktop/BECOv2/simulation/Analysis/statics/analysis
-(/Users/jerrywu/Desktop/BECOv2/simulation/Analysis/statics/analysis.tex
+**/Users/jerrywu/Desktop/BECOv2/simulation/Analysis/documentation/analysis
+(/Users/jerrywu/Desktop/BECOv2/simulation/Analysis/documentation/analysis.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/base/article.cls
@@ -781,18 +781,35 @@ Overfull \hbox (28.11157pt too wide) detected at line 352
 
 
 [8]
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 420.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 420.
+
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 420.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 420.
+
+
+Overfull \hbox (40.63254pt too wide) detected at line 420
+[]
+ []
+
 File: figs/Generailized expression on Cylinder Terrain.jpg Graphic file (type bmp)
 <figs/Generailized expression on Cylinder Terrain.jpg>
+
+
+[9]
 File: figs/Impossible case under Assumption.jpg Graphic file (type bmp)
 <figs/Impossible case under Assumption.jpg>
 
 
-[9]
+[10]
 File: figs/Cylinder-Case1.jpg Graphic file (type bmp)
 <figs/Cylinder-Case1.jpg>
-
-
-[10]
 File: figs/Cylinder-Case2.jpg Graphic file (type bmp)
 <figs/Cylinder-Case2.jpg>
 
@@ -806,7 +823,9 @@ File: figs/Cylinder-Case1-Supplementary.jpg Graphic file (type bmp)
 
 [13]
 
-[14] (./analysis.aux)
+[14]
+
+[15] (./analysis.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -815,12 +834,12 @@ Package rerunfilecheck Info: File `analysis.out' has not changed.
 (rerunfilecheck)             Checksum: 2EE39D02FA414A4779BA3A4652AE3DDE;78.
  ) 
 Here is how much of TeX's memory you used:
- 29703 strings out of 475366
- 594421 string characters out of 5762340
+ 29709 strings out of 475366
+ 594570 string characters out of 5762340
  959100 words of memory out of 5000000
- 52214 multiletter control sequences out of 15000+600000
- 611134 words of font info for 104 fonts, out of 8000000 for 9000
+ 52219 multiletter control sequences out of 15000+600000
+ 614115 words of font info for 105 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 84i,13n,93p,599b,1065s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,17n,93p,605b,1065s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on analysis.pdf (14 pages).
+Output written on analysis.pdf (15 pages).
