@@ -1,7 +1,9 @@
 .vscode/
 .pio/
+*.DS_Store
 
 real_robot/.pio/
+real_robot/.vscode/
 real_robot/.vscode/.browse.c_cpp.db*
 real_robot/.vscode/c_cpp_properties.json
 real_robot/.vscode/launch.json
