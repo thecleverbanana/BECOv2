@@ -1,3 +1,6 @@
+.vscode/
+.pio/
+
 real_robot/.pio/
 real_robot/.vscode/.browse.c_cpp.db*
 real_robot/.vscode/c_cpp_properties.json
