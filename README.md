@@ -9,23 +9,23 @@ This part is directly communicating with our actual rebot. The controller we are
 Before running the controller, please read followings:
 
 #### A. Wiring 
-![Wiring Diagram](figs/wiring.jpg)
+<img src="figs/Wiring.JPG" width="400"/>
 
 There are two major connections:
 
 1. **UART (RX/TX) with LSS motor**  
-   **Important**: please double check the wire direction of the power and ground of the LSS wire:  
-   https://wiki.lynxmotion.com/info/wiki/lynxmotion/view/ses-v2/lynxmotion-smart-servo/lss-electrical/  
-   <img src="figs/LSS_Wiring.jpg" width="200"/>  
+   **Important**: please double check the wire direction of the power and ground of the LSS wire:  [See official wiring guide](https://wiki.lynxmotion.com/info/wiki/lynxmotion/view/ses-v2/lynxmotion-smart-servo/lss-electrical/)
+
+   <img src="figs/LSS_Wiring.jpg" width="400"/>  
    We used Serial1 from Mega 2560 to communicate with the motor, which corresponds to pin 18 (TX1) and pin 19 (RX1) on the board.
 
 2. **PWM with linear actuator**  
    We used pin 4 (PWM capable) to connect with the linear actuator.  
    Make sure the blue wire matches the blue wire on the actuator.  
-   <img src="figs/Blue_PWM.jpg" width="200"/>  
+   <img src="figs/Blue_PWM.JPG" width="400"/>  
 
 All the wiring directions are marked, please check the markers:  
-<img src="figs/Mark1.jpg" width="200"/>
+<img src="figs/Mark1.JPG" width="400"/>
 
 #### B. Power
 1. Power should be connected to the PDB with maxium 12V and minimum 6V. And current should never exceed 1A, 650mA is enough
