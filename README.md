@@ -22,10 +22,10 @@ There are two major connections:
 2. **PWM with linear actuator**  
    We used pin 4 (PWM capable) to connect with the linear actuator.  
    Make sure the blue wire matches the blue wire on the actuator.  
-   <img src="figs/Blue_PWM.JPG" width="400"/>  
+   <img src="figs/Blue_PWM.JPG" width="200"/>  
 
 All the wiring directions are marked, please check the markers:  
-<img src="figs/Mark1.JPG" width="400"/>
+<img src="figs/Mark1.JPG" width="200"/>
 
 #### B. Power
 1. Power should be connected to the PDB with maxium 12V and minimum 6V. And current should never exceed 1A, 650mA is enough
