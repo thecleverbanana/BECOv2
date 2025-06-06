@@ -10,16 +10,23 @@ Before running the controller, please read followings:
 
 #### A. Wiring 
 ![Wiring Diagram](figs/wiring.jpg)
-There are two major connection: 
-1. UART(RX/TX) with LSS motor 
-    **Important**: please double check the wire direction of the power and ground of LSS wire: https://wiki.lynxmotion.com/info/wiki/lynxmotion/view/ses-v2/lynxmotion-smart-servo/lss-electrical/
-    !<img src="figs/LSS_Wiring.jpg" width="200"/> 
-    We used serial1 from Mega 2560 to comminucate with the motor which refers to pin 18() and pin 19() on board
-2. PWM with linear actuator.
-    We used pin4 on PWM section to connect with the lss motor, notice the blue wire is corresponding blue wire on the lienar actuator.
-    !<img src="figs/Blue_PWM.jpg" width="200"/> 
-All the wiring directions are marked, please check the marker.
-!<img src="figs/Mark1.jpg" width="200"/> 
+
+There are two major connections:
+
+1. **UART (RX/TX) with LSS motor**  
+   **Important**: please double check the wire direction of the power and ground of the LSS wire:  
+   https://wiki.lynxmotion.com/info/wiki/lynxmotion/view/ses-v2/lynxmotion-smart-servo/lss-electrical/  
+   <img src="figs/LSS_Wiring.jpg" width="200"/>  
+   We used Serial1 from Mega 2560 to communicate with the motor, which corresponds to pin 18 (TX1) and pin 19 (RX1) on the board.
+
+2. **PWM with linear actuator**  
+   We used pin 4 (PWM capable) to connect with the linear actuator.  
+   Make sure the blue wire matches the blue wire on the actuator.  
+   <img src="figs/Blue_PWM.jpg" width="200"/>  
+
+All the wiring directions are marked, please check the markers:  
+<img src="figs/Mark1.jpg" width="200"/>
+
 #### B. Power
 1. Power should be connected to the PDB with maxium 12V and minimum 6V. And current should never exceed 1A, 650mA is enough
 2. Power for linear actuator and motor are both 12 V.
