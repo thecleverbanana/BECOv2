@@ -14,10 +14,14 @@ void setup() {
   Serial.begin(115200);       // USB serial monitor
   Serial1.begin(115200);      // UART1 → LSS
   pinMode(actuatorPin, OUTPUT);
-  delay(1000);
 
   Serial.println("Mega2560 LSS phase controller ready.");
   Serial.println("Initializing motors to 45 degrees...");
+
+  // 初始角度设定为 45 度
+  sendLSSCommand("#0D0450");  // 45.0°
+  sendLSSCommand("#1D0450");  // 45.0°
+  delay(500);
   Serial.println("Type 0~4 to trigger phase:");
 }
 
@@ -25,22 +29,22 @@ void setup() {
 void execute_phase(int phase) {
   switch (phase) {
     case 0:
-      Serial.println("Phase 0: Reset both motors to 90°");
-      sendLSSCommand("#0D0900");
-      sendLSSCommand("#1D0900");
+      Serial.println("Phase 0: Reset both motors to 45°");
+      sendLSSCommand("#0D0450");
+      sendLSSCommand("#1D0450");
       break;
     case 1:
-      Serial.println("Phase 1: Motor0 -> 0°, Motor1 -> 180°");
+      Serial.println("Phase 1: Motor0 -> 0°, Motor1 -> 90°");
       sendLSSCommand("#0D0000");
-      sendLSSCommand("#1D01800");
+      sendLSSCommand("#1D0900");
       break;
     case 2:
       Serial.println("Phase 2: Extend shaft");
       shaft_pwm = 255;
       break;
     case 3:
-      Serial.println("Phase 3: Motor0 -> 180°, Motor1 -> 0°");
-      sendLSSCommand("#0D01800");
+      Serial.println("Phase 3: Motor0 -> 90°, Motor1 -> 0°");
+      sendLSSCommand("#0D0900");
       sendLSSCommand("#1D0000");
       break;
     case 4:
