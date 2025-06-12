@@ -682,5 +682,20 @@ Finally, the center $A$ of $c_A$ is obtained by inverting $\vec{n}$:
 
 This determines $A$ and $P'$ geometrically under the tangency constraints.
 
+\section{Contact Kinematics}
+
+Lets firstly parameterize our target terrain as:
+\[
+y = 
+\begin{cases}
+0, & x_0 + (a + 2r)k \leq x \leq x_0 + (a + 2r)k + a \\
+\sqrt{r^2 - (x - (a + r))^2}, & x_0 + (a + 2r)k + a \leq x \leq x_0 + (a + 2r)k + a + 2r
+\end{cases}
+\]
+
+\noindent
+where \( a \) is the gap distance between curved segments, and \( x_0 \) is the initial offset.
+
+
 
 \end{document}

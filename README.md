@@ -1,10 +1,10 @@
 # BECOv2
 This repo is aimed for RoboLAND and experiment on Multi-Agent Robot
 
-The repo is divided into three parts: real, simulation and analysis. 
+The repo is divided into four parts: Mega 2560, simulation, analysis and CAD 
 
-### Real 
-This part is directly communicating with our actual rebot. The controller we are using is Mega 2560 which supports rx/tx and pwm control.
+### Mega 2560 
+This part is directly communicating with our actual rebot using mega 2560 micro-controller unit. 
 
 Before running the controller, please read followings:
 
@@ -39,3 +39,6 @@ This part is used for robot simulation. We used the Webots and Gazebo as simulat
 
 ### Analysis
 All analysis code and documentation can be found here 
+
+### CAD
+All needed CAD files of our robot can be found here
