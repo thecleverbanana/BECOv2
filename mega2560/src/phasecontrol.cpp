@@ -18,7 +18,6 @@ void setup() {
   Serial.println("Mega2560 LSS phase controller ready.");
   Serial.println("Initializing motors to 45 degrees...");
 
-  // 初始角度设定为 45 度
   sendLSSCommand("#0D0450");  // 45.0°
   sendLSSCommand("#1D0450");  // 45.0°
   delay(500);
