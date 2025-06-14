@@ -10,7 +10,11 @@ public:
              int pwmMax = 225
         );
 
+    float kp, kd;
+
     void setPosition(float pos);
+    void setPosition(float pos, bool closedLoop);
+
     float getVoltage();
     float getPosition();
 
@@ -22,7 +26,6 @@ public:
 private:
     int pwmPin, feedbackPin;
     int pwmMax, rawMax, posMax;
-    float kp, kd;
     float frequency;      // Hz
     float omega;          // 2πf
 
