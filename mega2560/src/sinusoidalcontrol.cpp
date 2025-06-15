@@ -20,6 +20,10 @@ float leg0AngleTrajectory[N_Sample];
 float leg1AngleTrajectory[N_Sample];
 float spinePWMTrajectory[N_Sample];
 
+unsigned long startTime = 0;
+bool isRunning = false;
+
+/// @brief  The detailed formula can be found in analysis sinusoidal_wave_control.ipynb
 void sinusoidal_trajectory_generator() {
   for (int i = 0; i < N_Sample; i++) {
     float t = (float)i / N_Sample * Period;
@@ -36,10 +40,6 @@ void sinusoidal_trajectory_generator() {
     leg1AngleTrajectory[i] = leg1;
   }
 }
-
-const int updateInterval = 5;
-unsigned long lastUpdateTime = 0;
-bool isRunning = false;
 
 void setup() {
   Serial.begin(115200);
@@ -66,7 +66,7 @@ void loop() {
       isRunning = !isRunning;
       if (isRunning) {
         Serial.println("Oscillator started.");
-        lastUpdateTime = millis();
+        startTime = millis();  // record start time for each loop
       } else {
         Serial.println("Oscillator stopped.");
       }
@@ -76,32 +76,36 @@ void loop() {
   if (!isRunning) return;
 
   unsigned long currentMillis = millis();
-  
-  if (currentMillis - lastUpdateTime >= updateInterval) {
-    lastUpdateTime = currentMillis;
+  float elapsed = (currentMillis - startTime) / 1000.0;  // convert to second
+  float t_now = fmod(elapsed, Period);  // find t in period [0, Period]
 
-    unsigned long elapsed = currentMillis % (Period * 1000);
-    float t_now = elapsed / 1000.0;
-    int index = (int)(t_now / Period * N_Sample);
-    index = constrain(index, 0, N_Sample - 1);
-
-    spine.setPosition(spinePWMTrajectory[index]);
-    leg0.sendAngle(leg0AngleTrajectory[index]);
-    leg1.sendAngle(leg1AngleTrajectory[index]);
-
-      // Serial.print(">");
-      // Serial.print("Leg0:");
-      // Serial.print(leg0Trajectory[trajectoryIndex]);
-      // Serial.print(",");
-
-      // Serial.print("Leg1:");
-      // Serial.print(leg1Trajectory[trajectoryIndex]);
-      // Serial.print(",");
-
-      // Serial.print("Spine:");
-      // Serial.print(spineTrajectory[trajectoryIndex]);
-      // Serial.println();
+  // find closest t_k
+  int index = 0;
+  float minDiff = 1e6;
+  for (int i = 0; i < N_Sample; i++) {
+    float diff = fabs(t_now - t_k[i]);
+    if (diff < minDiff) {
+      minDiff = diff;
+      index = i;
     }
+  }
+
+  spine.setPosition(spinePWMTrajectory[index]);
+  leg0.sendAngle(leg0AngleTrajectory[index]);
+  leg1.sendAngle(leg1AngleTrajectory[index]);
+
+  Serial.print(">");
+  Serial.print("Leg0:");
+  Serial.print(leg0AngleTrajectory[index]);
+  Serial.print(",");
+
+  Serial.print("Leg1:");
+  Serial.print(leg1AngleTrajectory[index]);
+  Serial.print(",");
+
+  Serial.print("Spine:");
+  Serial.print(spinePWMTrajectory[index]);
+  Serial.println();
 }
 
 
