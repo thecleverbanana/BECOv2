@@ -7,14 +7,16 @@ Motor leg0(Serial1, 0);        // Motor ID 0
 Motor leg1(Serial1, 1);        // Motor ID 1
 
 const float spineMin = 0.0f;
-const float spineMax = 127.0f;
+const float spineMax = 25.0f;
 const int legAngleMin = 0;
 const int legAngleMax = 1800;
 
-const int Period = 30; 
+const int Period = 5; 
+//notes: the minimum period for full extension is 30s
+//futhur than that, the linear actuator wouldn't be able to catch
 const float omega = 2*PI/Period;
 const float offset = PI/2;
-const int N_Sample = 30;
+const int N_Sample = 200;
 float t_k[N_Sample];
 float leg0AngleTrajectory[N_Sample];
 float leg1AngleTrajectory[N_Sample];
