@@ -82,15 +82,8 @@ void loop() {
   float t_now = fmod(elapsed, Period);  // find t in period [0, Period]
 
   // find closest t_k
-  int index = 0;
-  float minDiff = 1e6;
-  for (int i = 0; i < N_Sample; i++) {
-    float diff = fabs(t_now - t_k[i]);
-    if (diff < minDiff) {
-      minDiff = diff;
-      index = i;
-    }
-  }
+  int index = (int)(t_now / Period * N_Sample);
+  index = constrain(index, 0, N_Sample - 1);
 
   spine.setPosition(spinePWMTrajectory[index]);
   leg0.sendAngle(leg0AngleTrajectory[index]);
