@@ -66,12 +66,16 @@
     \item \href{https://www.canva.com/design/DAGo-OCr6Yo/K5YV57vaBxux-PqkqwI4ow/edit?utm_content=DAGo-OCr6Yo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton}{Canva Graphics}
 \end{itemize}
 
-\begin{assumption}\label{ass:leg-ground-contact}
-The end point of each leg is always contacting the ground.=
-\end{assumption}
+% \begin{assumption}\label{ass:leg-ground-contact}
+% The end point of each leg is always contacting the ground.
+% \end{assumption}
 
 \begin{assumption}\label{ass: no-body-contact}
 The robot body would never contact with the terrain
+\end{assumption}
+
+\begin{assumption}\label{ass: com}
+The CoM of the robot is always at local geometric center in direction parrallel to Spine
 \end{assumption}
 
 \section{Statics}
@@ -682,20 +686,67 @@ Finally, the center $A$ of $c_A$ is obtained by inverting $\vec{n}$:
 
 This determines $A$ and $P'$ geometrically under the tangency constraints.
 
-\section{Contact Kinematics}
+\section{From d'Alembert principle to Dynamics}
+The d'Alembert principle provides a natural bridge from statics to dynamics. 
+It states that the dynamics of a mechanical system can be described as a 
+generalized static equilibrium, once the inertial forces are included. 
+For a system of particles, the principle is written as:
 
-Lets firstly parameterize our target terrain as:
+\begin{theorem}\label{thm:ld'Alembert}
+    \[
+    \sum_i \left( \mathbf{F}_i - m_i \mathbf{a}_i \right) \cdot \delta \mathbf{r}_i = 0
+    \]
+\end{theorem}
+
+where $\mathbf{F}_i$ is the applied force on the $i$-th particle, $m_i \mathbf{a}_i$ is its inertial force, and $\delta \mathbf{r}_i$ denotes any virtual displacement compatible with the system's constraints.
+
+\subsection*{Zig-Zag Terrain}
+\indent \indent Lets start with the Zig-Zag Terrain because it has a nice property that all end-point of legs should contact with the terrain.
+Therefore, there would be only two particles \(A, B\) should be considered in this simlified case.  
+The \textbf{DoF} of the system can be derived through the holonomic and non-holonomic constraint. 
+\subsubsection*{Holonomic constraints:}
 \[
-y = 
-\begin{cases}
-0, & x_0 + (a + 2r)k \leq x \leq x_0 + (a + 2r)k + a \\
-\sqrt{r^2 - (x - (a + r))^2}, & x_0 + (a + 2r)k + a \leq x \leq x_0 + (a + 2r)k + a + 2r
-\end{cases}
+\left\| \mathbf{r}_{B/O} - \mathbf{r}_{A/O} \right\| = L_\text{Spine} \cdot \sin(\arctan(\frac{L_\text{Spine}}{\abs{h2-h1}}))
 \]
 
-\noindent
-where \( a \) is the gap distance between curved segments, and \( x_0 \) is the initial offset.
+Let the inertial frame be defined as \( \mathcal{I} = \{ O; \mathbf{e}_x, \mathbf{e}_y \} \). The zig-zag terrain is defined by a periodic piecewise function \( y = h(x) \), with period \( T = 2r + d \) and height \( h = r \tan\theta \). For each point \( x \in \mathbb{R} \), define \( x_k = x \bmod T \). Then:
+
+\[
+h(x) =
+\begin{cases}
+\tan\theta \cdot x_k, & x_k \in [0, r] \\
+\tan\theta \cdot (2r - x_k), & x_k \in [r, 2r] \\
+0, & x_k \in [2r, 2r + d]
+\end{cases}
+\]
+\indent The holonomic constraints for points A and B being on the terrain surface are given by:
+\[
+f_A(x_A, y_A) := y_A - h(x_A) = 0, \quad f_B(x_B, y_B) := y_B - h(x_B) = 0
+\]
+
+\subsubsection*{Non-Holonomic constraints:}
+\indent \indent There are none.
+
+\noindent Therefore, the total \textbf{DoF} is \(4-2 = 2\). And we can formulate 
 
 
+
+
+
+
+
+
+% \subsection*{Cylinder Terrain}
+% Lets firstly parameterize our target terrain as:
+% \[
+% y = 
+% \begin{cases}
+% 0, & x_0 + (a + 2r)k \leq x \leq x_0 + (a + 2r)k + a \\
+% \sqrt{r^2 - (x - (a + r))^2}, & x_0 + (a + 2r)k + a \leq x \leq x_0 + (a + 2r)k + a + 2r
+% \end{cases}
+% \]
+
+% \noindent
+% where \( a \) is the gap distance between curved segments, and \( x_0 \) is the initial offset.
 
 \end{document}
