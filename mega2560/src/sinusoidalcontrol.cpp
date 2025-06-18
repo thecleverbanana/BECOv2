@@ -7,16 +7,16 @@ Motor leg0(Serial1, 0);        // Motor ID 0
 Motor leg1(Serial1, 1);        // Motor ID 1
 
 const float spineMin = 0.0f;
-const float spineMax = 25.0f;
+const float spineMax = 127.0f;
 const int legAngleMin = 0;
 const int legAngleMax = 1800;
 
-const int Period = 5; 
+const int Period = 50; 
 //notes: the minimum period for full extension is 30s
 //futhur than that, the linear actuator wouldn't be able to catch
 const float omega = 2*PI/Period;
 const float offset = PI/2;
-const int N_Sample = 200;
+const int N_Sample = 300;
 float t_k[N_Sample];
 float leg0AngleTrajectory[N_Sample];
 float leg1AngleTrajectory[N_Sample];
@@ -24,6 +24,9 @@ float spinePWMTrajectory[N_Sample];
 
 unsigned long startTime = 0;
 bool isRunning = false;
+// refreshing frequency control (20ms, 50Hz)
+const int updateIntervalMs = 20;
+unsigned long lastUpdateTime = 0;
 
 /// @brief  The detailed formula can be found in analysis sinusoidal_wave_control.ipynb
 void sinusoidal_trajectory_generator() {
@@ -69,6 +72,7 @@ void loop() {
       if (isRunning) {
         Serial.println("Oscillator started.");
         startTime = millis();  // record start time for each loop
+        lastUpdateTime = millis();
       } else {
         Serial.println("Oscillator stopped.");
       }
@@ -78,12 +82,15 @@ void loop() {
   if (!isRunning) return;
 
   unsigned long currentMillis = millis();
+
+  // refreshing frequency control
+  if(currentMillis - lastUpdateTime < updateIntervalMs) return;
+  lastUpdateTime = currentMillis;
+
   float elapsed = (currentMillis - startTime) / 1000.0;  // convert to second
   float t_now = fmod(elapsed, Period);  // find t in period [0, Period]
-
-  // find closest t_k
   int index = (int)(t_now / Period * N_Sample);
-  index = constrain(index, 0, N_Sample - 1);
+  index = constrain(index, 0, N_Sample - 1);  // find closest t_k
 
   spine.setPosition(spinePWMTrajectory[index]);
   leg0.sendAngle(leg0AngleTrajectory[index]);
