@@ -6,16 +6,16 @@ Actuator spine(4, A0);         // PWM pin: 4, Feedback pin: A0
 Motor leg0(Serial1, 0);        // Motor ID 0
 Motor leg1(Serial1, 1);        // Motor ID 1
 
-const float spineMin = 0.0f;
-const float spineMax = 127.0f;
+const float spineMin = 90.0f;
+const float spineMax = 230.0f;
 const int legAngleMin = 0;
 const int legAngleMax = 1800;
 
-const int Period = 50; 
+const int Period = 15; 
 //notes: the minimum period for full extension is 30s
 //futhur than that, the linear actuator wouldn't be able to catch
 const float omega = 2*PI/Period;
-const float offset = PI/2;
+const float offset =  1.75*PI;
 const int N_Sample = 300;
 float t_k[N_Sample];
 float leg0AngleTrajectory[N_Sample];
@@ -24,8 +24,8 @@ float spinePWMTrajectory[N_Sample];
 
 unsigned long startTime = 0;
 bool isRunning = false;
-// refreshing frequency control (20ms, 50Hz)
-const int updateIntervalMs = 20;
+// refreshing frequency control (5ms, 200Hz)
+const int updateIntervalMs = 5;
 unsigned long lastUpdateTime = 0;
 
 /// @brief  The detailed formula can be found in analysis sinusoidal_wave_control.ipynb
@@ -34,11 +34,13 @@ void sinusoidal_trajectory_generator() {
     float t = (float)i / N_Sample * Period;
     t_k[i] = t;
 
-    float pwm = ((spineMax-spineMin) / 2.0) * sin(omega * t) + ((spineMax-spineMin) / 2.0);
+    float pwm = ((spineMax - spineMin) / 2.0) * cos(omega * t + offset)
+                + ((spineMax + spineMin) / 2.0);
+
     spinePWMTrajectory[i] = pwm;
 
-    float theta0 = acos(sin(omega * t - offset));
-    float theta1 = acos(sin(omega * t - offset + PI));
+    float theta0 = acos(cos(omega * t ));
+    float theta1 = acos(cos(omega * t + PI));
     float leg0 = theta0 / PI * (legAngleMax-legAngleMin);
     float leg1 = theta1 / PI * (legAngleMax-legAngleMin);
     leg0AngleTrajectory[i] = leg0;
