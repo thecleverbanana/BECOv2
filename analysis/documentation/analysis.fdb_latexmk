@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1750386424.61273 "/Users/jerrywumacmini/Desktop/BECOv2/analysis/documentation/analysis.tex" "analysis.pdf" "analysis" 1750386425.61118 0
-  "/Users/jerrywumacmini/Desktop/BECOv2/analysis/documentation/analysis.tex" 1750386423.36949 29656 b6957be99a33b2e1fbe43e1ce61ffcb5 ""
+["pdflatex"] 1750386539.2864 "/Users/jerrywumacmini/Desktop/BECOv2/analysis/documentation/analysis.tex" "analysis.pdf" "analysis" 1750386540.38782 0
+  "/Users/jerrywumacmini/Desktop/BECOv2/analysis/documentation/analysis.tex" 1750386539.05071 29657 3d84d3f78380e8d68184c894dd5ac83f ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -238,9 +238,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1744503443 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "analysis.aux" 1750386425.49464 1516 e1fcfd7086fd78c9bfd4dd72a2701c20 "pdflatex"
-  "analysis.out" 1750386425.4955 833 39a957dedfc2f7a6bcc855c467d0792e "pdflatex"
-  "analysis.tex" 1750386423.36949 29656 b6957be99a33b2e1fbe43e1ce61ffcb5 ""
+  "analysis.aux" 1750386540.27012 1516 e1fcfd7086fd78c9bfd4dd72a2701c20 "pdflatex"
+  "analysis.out" 1750386540.271 833 39a957dedfc2f7a6bcc855c467d0792e "pdflatex"
+  "analysis.tex" 1750386539.05071 29657 3d84d3f78380e8d68184c894dd5ac83f ""
   "figs/Case2.jpg" 1750386029.67647 92638 4374c4fe9b42fea4745f709d7120ca05 ""
   "figs/Case3.jpg" 1750386029.677 93845 5bfcc4927f81392b3715525d3bf196a1 ""
   "figs/Case4.jpg" 1750386029.67732 102394 984e0bb10752f43c7ba5160ec396d62f ""
