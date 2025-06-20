@@ -688,9 +688,9 @@ This determines $A$ and $P'$ geometrically under the tangency constraints.
 
 \section{From d'Alembert principle to Dynamics}
 The d'Alembert principle provides a natural bridge from statics to dynamics. 
-It states that the dynamics of a mechanical system can be described as a 
-generalized static equilibrium, once the inertial forces are included. 
-For a system of particles, the principle is written as:
+% It states that the dynamics of a mechanical system can be described as a 
+% generalized static equilibrium, once the inertial forces are included. 
+% For a system of particles, the principle is written as:
 
 \begin{theorem}\label{thm:ld'Alembert}
     \[
@@ -700,34 +700,96 @@ For a system of particles, the principle is written as:
 
 where $\mathbf{F}_i$ is the applied force on the $i$-th particle, $m_i \mathbf{a}_i$ is its inertial force, and $\delta \mathbf{r}_i$ denotes any virtual displacement compatible with the system's constraints.
 
-\subsection*{Zig-Zag Terrain}
-\indent \indent Lets start with the Zig-Zag Terrain because it has a nice property that all end-point of legs should contact with the terrain.
-Therefore, there would be only two particles \(A, B\) should be considered in this simlified case.  
-The \textbf{DoF} of the system can be derived through the holonomic and non-holonomic constraint. 
-\subsubsection*{Holonomic constraints:}
+\subsection{Zig-Zag Terrain}
+Let the position of the robot's center of mass be denoted by \( \mathbf{r}_G^\mathcal{I} \in \mathbb{R}^2 \). And two leg contact position
+as \( \mathbf{p}_A^\mathcal{I} \)  and \( \mathbf{p}_B^\mathcal{I} \). And this is the minimum number of points for describing the system 
+
+
+\subsubsection{Holonomic constraints:}
+In general, the center of mass can be written as a function of the two foot positions \( \mathbf{p}_A^\mathcal{I} \) and \( \mathbf{p}_B^\mathcal{I} \), depending on the mass distribution and geometry:
+
 \[
-\left\| \mathbf{r}_{B/O} - \mathbf{r}_{A/O} \right\| = L_\text{Spine} \cdot \sin(\arctan(\frac{L_\text{Spine}}{\abs{h2-h1}}))
+\mathbf{r}_G^\mathcal{I} = \mathbf{f}_G\left( \mathbf{p}_A^\mathcal{I}, \mathbf{p}_B^\mathcal{I} , \beta \right)
+\]
+where \( \beta \) is the pitch angle of the spine, measured from horizontal.
+
+Using the identity \( \sin(\arctan(x)) = \frac{x}{\sqrt{1 + x^2}} \), the geometric constraint imposed by the spine length can be rewritten as:
+
+\[
+\left\| \mathbf{p}_B^\mathcal{I} - \mathbf{p}_A^\mathcal{I} \right\| =
+\frac{L_\text{Spine}^2}{\sqrt{L_\text{Spine}^2 + \left(L_{\text{Leg}2} - L_{\text{Leg}1}\right)^2}}
 \]
 
-Let the inertial frame be defined as \( \mathcal{I} = \{ O; \mathbf{e}_x, \mathbf{e}_y \} \). The zig-zag terrain is defined by a periodic piecewise function \( y = h(x) \), with period \( T = 2r + d \) and height \( h = r \tan\theta \). For each point \( x \in \mathbb{R} \), define \( x_k = x \bmod T \). Then:
+The zig-zag terrain is defined by a periodic piecewise function \( y = h(x^\mathcal{I}) \), with period \( T = 2r + d \) and height \( h = r \tan\theta \). For each point \( x^\mathcal{I} \in \mathbb{R} \), define \( x_k = x^\mathcal{I} \bmod T \). Then:
 
 \[
-h(x) =
+h(x^\mathcal{I}) =
 \begin{cases}
 \tan\theta \cdot x_k, & x_k \in [0, r] \\
 \tan\theta \cdot (2r - x_k), & x_k \in [r, 2r] \\
 0, & x_k \in [2r, 2r + d]
 \end{cases}
 \]
-\indent The holonomic constraints for points A and B being on the terrain surface are given by:
+
+The terrain contact constraints are then written as:
+
 \[
-f_A(x_A, y_A) := y_A - h(x_A) = 0, \quad f_B(x_B, y_B) := y_B - h(x_B) = 0
+f_A := p_{A,y}^\mathcal{I} - h(p_{A,x}^\mathcal{I}) = 0, \quad
+f_B := p_{B,y}^\mathcal{I} - h(p_{B,x}^\mathcal{I}) = 0
 \]
 
-\subsubsection*{Non-Holonomic constraints:}
+\subsubsection{Non-Holonomic constraints:}
 \indent \indent There are none.
 
-\noindent Therefore, the total \textbf{DoF} is \(4-2 = 2\). And we can formulate 
+\vspace{10pt}
+Therefore, the total \textbf{DoF} is \(4-3 =1\). This indicates we can desribe the whole system through one generalized
+coordinate. And we can choose \(x_{A}^{\mathcal{I}}\) for simplicity. We can describe as \( q := x_A^\mathcal{I} \). All other quantities can be written as functions of \( q \) due to the holonomic constraints.
+\[
+\mathbf{p^\mathcal{I}}_A(q) =
+\begin{bmatrix}
+q \\
+h(q)
+\end{bmatrix}, \quad
+\mathbf{p^\mathcal{I}}_B(q) =
+\begin{bmatrix}
+x_B(q) \\
+h(x_B(q))
+\end{bmatrix}
+\]
+
+Then, the velocity and acceleration of the \textbf{CoM} can be expressed as:
+\[
+\dot{\mathbf{r}}_G = \frac{d \mathbf{f}_G}{dq} \cdot \dot{q}, \quad
+\ddot{\mathbf{r}}_G = \frac{d \mathbf{f}_G}{dq} \cdot \ddot{q} + \frac{d^2 \mathbf{f}_G}{dq^2} \cdot \dot{q}^2
+\]
+
+Therefore, through d'Alembert principle, we write:
+\[
+\left( \mathbf{F}_A + \mathbf{F}_B 
++ \mathbf{f}_A + \mathbf{f}_B 
++ \mathbf{F}_g + \mathbf{F}_{\text{int}} - m\ddot{\mathbf{r}}_G \right) 
+\cdot \delta \mathbf{r}_G = 0
+\]
+
+Through the implicit expression of CoM: 
+\[
+\mathbf{r}_G^{\mathcal{I}} = \frac{1}{2} \left( \mathbf{p}_A^{\mathcal{I}} + H_1 
+\begin{bmatrix}
+\sin\beta \\
+\cos\beta
+\end{bmatrix} + \mathbf{p}_B^{\mathcal{I}} + H_2 
+\begin{bmatrix}
+\sin\beta \\
+\cos\beta
+\end{bmatrix} \right)
++ d_\perp 
+\begin{bmatrix}
+- \cos\beta \\
+\sin\beta
+\end{bmatrix}
+\]
+
+where \(\beta\) is also determined by \(q\):
 
 
 

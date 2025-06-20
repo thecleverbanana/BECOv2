@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  18 JUN 2025 02:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  19 JUN 2025 19:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -777,7 +777,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 62.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<figs/Simple case where two legs have same height.jpg, id=17, 794.97pt x 525.965pt>
+<figs/Simple case where two legs have same height.jpg, id=29, 794.97pt x 525.965pt>
 File: figs/Simple case where two legs have same height.jpg Graphic file (type jpg)
 <use figs/Simple case where two legs have same height.jpg>
 Package pdftex.def Info: figs/Simple case where two legs have same height.jpg  used on input line 92.
@@ -787,7 +787,7 @@ Package pdftex.def Info: figs/Simple case where two legs have same height.jpg  u
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./figs/Simple case where two legs have same height.jpg>]
-<figs/Two legs have different height.jpg, id=36, 796.9775pt x 505.89pt>
+<figs/Two legs have different height.jpg, id=48, 796.9775pt x 505.89pt>
 File: figs/Two legs have different height.jpg Graphic file (type jpg)
 <use figs/Two legs have different height.jpg>
 Package pdftex.def Info: figs/Two legs have different height.jpg  used on input line 108.
@@ -795,7 +795,7 @@ Package pdftex.def Info: figs/Two legs have different height.jpg  used on input 
 
 
 [2 <./figs/Two legs have different height.jpg>]
-<figs/Case2.jpg, id=52, 1549.79pt x 586.19pt>
+<figs/Case2.jpg, id=64, 1549.79pt x 586.19pt>
 File: figs/Case2.jpg Graphic file (type jpg)
 <use figs/Case2.jpg>
 Package pdftex.def Info: figs/Case2.jpg  used on input line 163.
@@ -803,7 +803,7 @@ Package pdftex.def Info: figs/Case2.jpg  used on input line 163.
 
 
 [3 <./figs/Case2.jpg>]
-<figs/Case3.jpg, id=61, 1493.58pt x 718.685pt>
+<figs/Case3.jpg, id=73, 1493.58pt x 718.685pt>
 File: figs/Case3.jpg Graphic file (type jpg)
 <use figs/Case3.jpg>
 Package pdftex.def Info: figs/Case3.jpg  used on input line 189.
@@ -811,7 +811,7 @@ Package pdftex.def Info: figs/Case3.jpg  used on input line 189.
 
 
 [4 <./figs/Case3.jpg>]
-<figs/Case4.jpg, id=67, 1549.79pt x 1069.9975pt>
+<figs/Case4.jpg, id=79, 1549.79pt x 1069.9975pt>
 File: figs/Case4.jpg Graphic file (type jpg)
 <use figs/Case4.jpg>
 Package pdftex.def Info: figs/Case4.jpg  used on input line 226.
@@ -839,7 +839,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.3}) h
                    \relax 
 l.245 \begin{equation}
                       
-<figs/geometry shape.jpg, id=78, 1266.7325pt x 652.4375pt>
+<figs/geometry shape.jpg, id=90, 1266.7325pt x 652.4375pt>
 File: figs/geometry shape.jpg Graphic file (type jpg)
 <use figs/geometry shape.jpg>
 Package pdftex.def Info: figs/geometry shape.jpg  used on input line 266.
@@ -847,7 +847,7 @@ Package pdftex.def Info: figs/geometry shape.jpg  used on input line 266.
 
 
 [6 <./figs/geometry shape.jpg>]
-<figs/Generailized.jpg, id=88, 1268.74pt x 628.3475pt>
+<figs/Generailized.jpg, id=100, 1268.74pt x 628.3475pt>
 File: figs/Generailized.jpg Graphic file (type jpg)
 <use figs/Generailized.jpg>
 Package pdftex.def Info: figs/Generailized.jpg  used on input line 289.
@@ -884,7 +884,7 @@ Overfull \hbox (40.62857pt too wide) detected at line 424
 []
  []
 
-<figs/Generailized expression on Cylinder Terrain.jpg, id=100, 1545.775pt x 1088.065pt>
+<figs/Generailized expression on Cylinder Terrain.jpg, id=112, 1545.775pt x 1088.065pt>
 File: figs/Generailized expression on Cylinder Terrain.jpg Graphic file (type jpg)
 <use figs/Generailized expression on Cylinder Terrain.jpg>
 Package pdftex.def Info: figs/Generailized expression on Cylinder Terrain.jpg  used on input line 439.
@@ -895,7 +895,7 @@ Package pdftex.def Info: figs/Generailized expression on Cylinder Terrain.jpg  u
 
 LaTeX Warning: Reference `ass:leg-ground-contact' on page 10 undefined on input line 446.
 
-<figs/Impossible case under Assumption.jpg, id=111, 2234.3475pt x 1264.725pt>
+<figs/Impossible case under Assumption.jpg, id=123, 2234.3475pt x 1264.725pt>
 File: figs/Impossible case under Assumption.jpg Graphic file (type jpg)
 <use figs/Impossible case under Assumption.jpg>
 Package pdftex.def Info: figs/Impossible case under Assumption.jpg  used on input line 450.
@@ -906,12 +906,12 @@ LaTeX Warning: Reference `ass:leg-ground-contact' on page 10 undefined on input 
 
 
 [10 <./figs/Generailized expression on Cylinder Terrain.jpg> <./figs/Impossible case under Assumption.jpg>]
-<figs/Cylinder-Case1.jpg, id=118, 2220.295pt x 1421.31pt>
+<figs/Cylinder-Case1.jpg, id=130, 2220.295pt x 1421.31pt>
 File: figs/Cylinder-Case1.jpg Graphic file (type jpg)
 <use figs/Cylinder-Case1.jpg>
 Package pdftex.def Info: figs/Cylinder-Case1.jpg  used on input line 476.
 (pdftex.def)             Requested size: 234.8775pt x 150.33716pt.
-<figs/Cylinder-Case2.jpg, id=119, 2208.25pt x 1403.2425pt>
+<figs/Cylinder-Case2.jpg, id=131, 2208.25pt x 1403.2425pt>
 File: figs/Cylinder-Case2.jpg Graphic file (type jpg)
 <use figs/Cylinder-Case2.jpg>
 Package pdftex.def Info: figs/Cylinder-Case2.jpg  used on input line 484.
@@ -919,7 +919,7 @@ Package pdftex.def Info: figs/Cylinder-Case2.jpg  used on input line 484.
 
 
 [11 <./figs/Cylinder-Case1.jpg> <./figs/Cylinder-Case2.jpg>]
-<figs/Cylinder-Case1-Supplementary.jpg, id=128, 1461.46pt x 1096.095pt>
+<figs/Cylinder-Case1-Supplementary.jpg, id=140, 1461.46pt x 1096.095pt>
 File: figs/Cylinder-Case1-Supplementary.jpg Graphic file (type jpg)
 <use figs/Cylinder-Case1-Supplementary.jpg>
 Package pdftex.def Info: figs/Cylinder-Case1-Supplementary.jpg  used on input line 567.
@@ -934,7 +934,9 @@ Package pdftex.def Info: figs/Cylinder-Case1-Supplementary.jpg  used on input li
 
 [15]
 
-[16] (./analysis.aux)
+[16]
+
+[17] (./analysis.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -944,21 +946,21 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `analysis.out' has not changed.
-(rerunfilecheck)             Checksum: BCD86135012DFA334060DC242AA5DC86;318.
+(rerunfilecheck)             Checksum: 39A957DEDFC2F7A6BCC855C467D0792E;833.
  ) 
 Here is how much of TeX's memory you used:
- 31747 strings out of 473190
- 640456 string characters out of 5715801
- 1096636 words of memory out of 5000000
- 54450 multiletter control sequences out of 15000+600000
+ 31751 strings out of 473190
+ 640540 string characters out of 5715801
+ 1096637 words of memory out of 5000000
+ 54453 multiletter control sequences out of 15000+600000
  583445 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,93p,605b,1179s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on analysis.pdf (16 pages, 2559772 bytes).
+Output written on analysis.pdf (17 pages, 2564686 bytes).
 PDF statistics:
- 279 PDF objects out of 1000 (max. 8388607)
- 201 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
- 89 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 292 PDF objects out of 1000 (max. 8388607)
+ 213 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
