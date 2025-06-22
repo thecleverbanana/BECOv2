@@ -686,6 +686,7 @@ Finally, the center $A$ of $c_A$ is obtained by inverting $\vec{n}$:
 
 This determines $A$ and $P'$ geometrically under the tangency constraints.
 
+\newpage
 \section{From d'Alembert principle to Dynamics}
 The d'Alembert principle provides a natural bridge from statics to dynamics. 
 % It states that the dynamics of a mechanical system can be described as a 
@@ -700,34 +701,16 @@ The d'Alembert principle provides a natural bridge from statics to dynamics.
 
 where $\mathbf{F}_i$ is the applied force on the $i$-th particle, $m_i \mathbf{a}_i$ is its inertial force, and $\delta \mathbf{r}_i$ denotes any virtual displacement compatible with the system's constraints.
 
-\subsection{Zig-Zag Terrain}
 Let the position of the robot's center of mass be denoted by \( \mathbf{r}_G^\mathcal{I} \in \mathbb{R}^2 \). And two leg contact position
 as \( \mathbf{p}_A^\mathcal{I} \)  and \( \mathbf{p}_B^\mathcal{I} \).
 
-\subsubsection{Holonomic constraints:}
+\subsection{Holonomic constraints:}
 
 Using the identity \( \sin(\arctan(x)) = \frac{x}{\sqrt{1 + x^2}} \), the geometric constraint imposed by the spine length can be rewritten as:
 
 \[
-\left\| \mathbf{p}_B^\mathcal{I} - \mathbf{p}_A^\mathcal{I} \right\| =
+L_\text{Arm} = \left\| \mathbf{p}_B^\mathcal{I} - \mathbf{p}_A^\mathcal{I} \right\| =
 \frac{L_\text{Spine}^2}{\sqrt{L_\text{Spine}^2 + \left(L_{\text{Leg}2} - L_{\text{Leg}1}\right)^2}}
-\]
-
-The zig-zag terrain is defined by a periodic piecewise function \( y = h(x^\mathcal{I}) \), with period \( T = 2r + d \) and height \( h = r \tan\theta \). For each point \( x^\mathcal{I} \in \mathbb{R} \), define \( x_k = x^\mathcal{I} \bmod T \). Then:
-
-\[
-h(x^\mathcal{I}) =
-\begin{cases}
-\tan\theta \cdot x_k, & x_k \in [0, r] \\
-\tan\theta \cdot (2r - x_k), & x_k \in [r, 2r] \\
-0, & x_k \in [2r, 2r + d]
-\end{cases}
-\]
-
-Here, in order to make the terrain differentiable at any point, we can use fourier series to approximate the terrain like:
-
-\[
-h(x^\mathcal{I}) = \frac{8 r \tan\theta}{\pi^2} \sum_{n=1,3,5,\dots}^{N} \frac{1}{n^2} \cos\left( \frac{2\pi n x}{2r + d} \right)
 \]
 
 The terrain contact constraints are then written as:
@@ -745,7 +728,7 @@ In general, the center of mass can be written as a function of the two foot posi
 where \( \beta \) is the pitch angle of the spine, measured from horizontal and it can be derived through
 \(\mathbf{f}_{\beta}(\mathbf{p}_A^\mathcal{I},L_\text{Spine},L_{\text{Leg}1},L_{\text{Leg}2})\)
 
-\subsubsection{Non-Holonomic constraints:}
+\subsection{Non-Holonomic constraints:}
 \indent \indent There are none.
 
 \vspace{10pt}
@@ -759,8 +742,8 @@ h(q)
 \end{bmatrix}, \quad
 \mathbf{p^\mathcal{I}}_B(q) =
 \begin{bmatrix}
-x_B(q) \\
-h(x_B(q))
+\mathbf{f}_B(q) \\
+h(\mathbf{f}_B(q))
 \end{bmatrix}, \quad
 \mathbf{r}_G^\mathcal{I} =
 \begin{bmatrix}
@@ -785,46 +768,72 @@ Therefore, through d'Alembert principle, we write:
 \cdot \delta \mathbf{r}_G = 0
 \]
 
-Now, lets firstly expand out the points. 
+\subsection{Sinusoidal Terrain}
+\indent \indent Lets start with the sinusoidal terrain where the terrain is easy to express with one function:
+
+\[
+h(x^\mathcal{I}) = A \cdot \sin\left( \frac{2\pi}{T} x^\mathcal{I} + \phi \right) + B
+\]
+
+We can set \(B\) as \(\frac{A}{2}\) and \(\theta\) as 0 and gives us: 
+
+\[
+h(x^\mathcal{I}) = A \cdot \sin\left( \frac{2\pi}{T} x^\mathcal{I} \right) + \frac{A}{2}
+\]
+
+Therefore, we can express our 3 point explicitly as:
+
 \[
 \mathbf{p^\mathcal{I}}_A(q) =
 \begin{bmatrix}
 q \\
-h(q)
-\end{bmatrix} = 
-\begin{cases}
-\begin{bmatrix}
-q \\
-\tan\theta \cdot x_k
-\end{bmatrix}, & x_k \in [0, r] \\[1em]
-\begin{bmatrix}
-q \\
-\tan\theta \cdot (2r - x_k)
-\end{bmatrix}, & x_k \in [r, 2r] \\[1em]
-\begin{bmatrix}
-q \\
-0
-\end{bmatrix}, & x_k \in [2r, 2r + d]
-\end{cases}, \quad
-x_k := q \bmod (2r + d)
-\]
-
-\[
-\mathbf{p}_B^\mathcal{I}(q) =
-\begin{bmatrix}
-x_B(q) \\
-h(x_B(q))
+A \cdot \sin\left( \frac{2\pi}{T} q \right) + \frac{A}{2}
 \end{bmatrix}
-\quad \text{where } x_B(q) \text{ satisfies:}
 \]
 
 \[
-(x_B(q) - q)^2 + \left(h(x_B(q)) - h(q)\right)^2 = L_{\text{proj}}^2
-\]
-\[
-h(x) = r \tan\theta \cdot \left(1 - 4 \left| \frac{x}{T} - \left\lfloor \frac{x}{T} + \frac{1}{2} \right\rfloor \right| \right)
+\mathbf{p^\mathcal{I}}_B(q) =
+\begin{bmatrix}
+\mathbf{f}_B(q) \\
+h(\mathbf{f}_B(q))
+\end{bmatrix}, \quad \text{by solving: } \\
+(x_B-q)^2+(\mathbf{f}_B(x_B)-\mathbf{f}_B(q))^2 = L_\text{Arm}^2
 \]
 
+\[
+\Rightarrow (x_B-q)^2+(A \cdot \sin\left( \frac{2\pi}{T} x_B \right)-
+A \cdot \sin\left( \frac{2\pi}{T} q \right))^2 = L_\text{Arm}^2
+\]
+
+
+
+\[
+\mathbf{r}_G^\mathcal{I} =
+\begin{bmatrix}
+\mathbf{f}_{Gx}(q) \\
+\mathbf{f}_{Gy}(q)
+\end{bmatrix}
+\]
+
+
+\newpage
+\subsection{Zig-Zag Terrain}
+The zig-zag terrain is defined by a periodic piecewise function \( y = h(x^\mathcal{I}) \), with period \( T = 2r + d \) and height \( h = r \tan\theta \). For each point \( x^\mathcal{I} \in \mathbb{R} \), define \( x_k = x^\mathcal{I} \bmod T \). Then:
+
+\[
+h(x^\mathcal{I}) =
+\begin{cases}
+\tan\theta \cdot x_k, & x_k \in [0, r] \\
+\tan\theta \cdot (2r - x_k), & x_k \in [r, 2r] \\
+0, & x_k \in [2r, 2r + d]
+\end{cases}
+\]
+
+Here, in order to make the terrain differentiable at any point, we can use fourier series to approximate the terrain like:
+
+\[
+h(x^\mathcal{I}) = \frac{8 r \tan\theta}{\pi^2} \sum_{n=1,3,5,\dots}^{N} \frac{1}{n^2} \cos\left( \frac{2\pi n x}{2r + d} \right)
+\]
 
 % \subsection*{Cylinder Terrain}
 % Lets firstly parameterize our target terrain as:
