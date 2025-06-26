@@ -726,7 +726,60 @@ In general, the center of mass can be written as a function of the two foot posi
 \mathbf{r}_G^\mathcal{I} = \mathbf{f}_G\left( \mathbf{p}_A^\mathcal{I}, \mathbf{p}_B^\mathcal{I} , \beta \right)
 \]
 where \( \beta \) is the pitch angle of the spine, measured from horizontal and it can be derived through
-\(\mathbf{f}_{\beta}(\mathbf{p}_A^\mathcal{I},L_\text{Spine},L_{\text{Leg}1},L_{\text{Leg}2})\)
+\(\mathbf{f}_{\beta}(\mathbf{p}_A^\mathcal{I},\mathbf{p}_B^\mathcal{I},L_\text{Spine},L_{\text{Leg}1},L_{\text{Leg}2})\) 
+by geometric constrains following:
+\begin{enumerate}
+    \item $\|\mathbf{q}_1 - \mathbf{p}_A\| = L_\text{Leg1}$
+    \item $\|\mathbf{q}_2 - \mathbf{p}_B\| = L_\text{Leg2}$
+    \item $\|\mathbf{q}_2 - \mathbf{q}_1\| = L_\text{Spine}$
+    \item Directional constraint: 
+    \[
+        \mathbf{q}_1 - \mathbf{p}_A \parallel \mathbf{q}_2 - \mathbf{p}_B 
+        \Rightarrow 
+        (\mathbf{q}_1 - \mathbf{p}_A) = \lambda (\mathbf{q}_2 - \mathbf{p}_B)
+    \]
+\end{enumerate}
+Therefore, we get:
+\begin{align*}
+& (x_1 - x_A)^2 + (y_1 - y_A)^2 = L_{\text{Leg}1}^2 \\[0.5em]
+& (x_2 - x_B)^2 + (y_2 - y_B)^2 = L_{\text{Leg}2}^2 \\[0.5em]
+& (x_2 - x_1)^2 + (y_2 - y_1)^2 = L_{\text{Spine}}^2 \\[0.5em]
+& (x_1 - x_A)(y_2 - y_B) - (y_1 - y_A)(x_2 - x_B) = 0
+\end{align*}
+
+And therefore, we can get the solution of \(x_1, x_2, y_1, y_2\) through numerical method. 
+And then, we can find the \(\beta\) by: 
+\[
+\beta = \operatorname{atan2}\!\bigl(y_1 - y_A,\; x_1 - x_A\bigr) \\[6pt]
+\]  
+
+Furthure more, we can even determine the \textbf{CoM} by: 
+\[
+\mathbf{r}_G^\mathcal{I} =
+\begin{bmatrix}
+x_m \\
+y_m
+\end{bmatrix}
++
+d \begin{bmatrix}
+\cos\beta \\
+\sin\beta
+\end{bmatrix},
+\quad
+\text{where} \quad
+\begin{bmatrix}
+x_m \\
+y_m
+\end{bmatrix}
+=
+\frac{1}{2}
+\begin{bmatrix}
+x_1 + x_2 \\
+y_1 + y_2
+\end{bmatrix},
+\text{and } d 
+\text{ is offset} 
+\]
 
 \subsection{Non-Holonomic constraints:}
 \indent \indent There are none.
@@ -760,10 +813,8 @@ Then, the velocity and acceleration of the \textbf{CoM} can be expressed as:
 
 Therefore, through d'Alembert principle, we write:
 \[
-\left( \mathbf{N}_A + \mathbf{N}_B 
-+ \mathbf{f}_A + \mathbf{f}_B 
-+ \mathbf{F}_g + \mathbf{F}_{\text{Spine}}
-+ \mathbf{F}_{\text{Leg1}} + \mathbf{F}_{\text{Leg2}}  
+\left(\mathbf{f}_A + \mathbf{f}_B 
++ \mathbf{F}_g 
 - m\ddot{\mathbf{r}}_G \right) 
 \cdot \delta \mathbf{r}_G = 0
 \]
@@ -781,40 +832,154 @@ We can set \(B\) as \(\frac{A}{2}\) and \(\theta\) as 0 and gives us:
 h(x^\mathcal{I}) = A \cdot \sin\left( \frac{2\pi}{T} x^\mathcal{I} \right) + \frac{A}{2}
 \]
 
-Therefore, we can express our 3 point explicitly as:
+Therefore, we can express our three key points explicitly as:
 
 \[
-\mathbf{p^\mathcal{I}}_A(q) =
+\footnotesize
+\setlength{\arraycolsep}{6pt}   % space between columns
+\renewcommand{\arraystretch}{1.05}% vertical row spacing
+\begin{array}{@{}l@{\qquad}l@{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mathbf{p}_A^\mathcal{I}(q)=
 \begin{bmatrix}
-q \\
-A \cdot \sin\left( \frac{2\pi}{T} q \right) + \frac{A}{2}
+q\\
+A\sin\!\bigl(\tfrac{2\pi}{T}q\bigr)+\tfrac{A}{2}
 \end{bmatrix}
-\]
-
-\[
-\mathbf{p^\mathcal{I}}_B(q) =
+&
+\text{directly defined by } q
+\\[.8em]
+\noalign{\hrule height 0.35pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mathbf{p}_B^\mathcal{I}(q)=
 \begin{bmatrix}
-\mathbf{f}_B(q) \\
-h(\mathbf{f}_B(q))
-\end{bmatrix}, \quad \text{by solving: } \\
-(x_B-q)^2+(\mathbf{f}_B(x_B)-\mathbf{f}_B(q))^2 = L_\text{Arm}^2
-\]
-
-\[
-\Rightarrow (x_B-q)^2+(A \cdot \sin\left( \frac{2\pi}{T} x_B \right)-
-A \cdot \sin\left( \frac{2\pi}{T} q \right))^2 = L_\text{Arm}^2
-\]
-
-
-
-\[
-\mathbf{r}_G^\mathcal{I} =
-\begin{bmatrix}
-\mathbf{f}_{Gx}(q) \\
-\mathbf{f}_{Gy}(q)
+x_B(q)\\
+A\sin\!\bigl(\tfrac{2\pi}{T}x_B(q)\bigr)+\tfrac{A}{2}
 \end{bmatrix}
+&
+\begin{aligned}
+x_B(q)\ \text{solves:}\quad
+(x_B-q)^2
+&+\Bigl[A\sin\!\bigl(\tfrac{2\pi}{T}x_B\bigr)
+      -A\sin\!\bigl(\tfrac{2\pi}{T}q\bigr)\Bigr]^2
+      =L_{\text{Arm}}^{\,2}
+\end{aligned}
+\\[.8em]
+\noalign{\hrule height 0.35pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mathbf{r}_G^\mathcal{I}(q)=
+\begin{bmatrix}
+x_m\\
+y_m
+\end{bmatrix}
++
+d\!
+\begin{bmatrix}
+\cos\beta\\
+\sin\beta
+\end{bmatrix}
+&
+\begin{aligned}
+x_m &=\tfrac12(x_1+x_2),\quad
+y_m=\tfrac12(y_1+y_2)\\[2pt]
+\beta &=\operatorname{atan2}(y_1-y_A,\;x_1-x_A)\\[4pt]
+x_1, x_2, y_1, y_2\ \text{solves:}\quad
+(x_1-x_A)^2+(y_1-y_A)^2 &=L_{\text{Leg}1}^2\\
+(x_2-x_B)^2+(y_2-y_B)^2 &=L_{\text{Leg}2}^2\\
+(x_2-x_1)^2+(y_2-y_1)^2 &=L_{\text{Spine}}^2\\
+(x_1-x_A)(y_2-y_B) -\,(y_1-y_A)(x_2-x_B)&=0
+\end{aligned}
+\end{array}
 \]
 
+Therefore, we can now expand out the equation for virtual work as follows:
+
+\[
+\left(
+\mathbf{f}_A \cdot \frac{d\mathbf{p}_A}{dq}
++ \mathbf{f}_B \cdot \frac{d\mathbf{p}_B}{dq}
++ \mathbf{F}_g \cdot \frac{d\mathbf{r}_G}{dq}
+- m \ddot{\mathbf{r}}_G \cdot \frac{d\mathbf{r}_G}{dq}
+\right)
+\delta q = 0
+\]
+
+\[
+\begin{aligned}
+\mathbf{f}_A &= 
+\lambda_N^A \, \hat{\mathbf{n}}_A +
+\lambda_f^A \, \hat{\mathbf{t}}_A +
+\lambda_{\parallel}^A \, \hat{\mathbf{e}}_\beta +
+\lambda_{\perp}^A \, \hat{\mathbf{e}}_\beta^\perp \\[0.5em]
+\mathbf{f}_B &= 
+\lambda_N^B \, \hat{\mathbf{n}}_B +
+\lambda_f^B \, \hat{\mathbf{t}}_B +
+\lambda_{\parallel}^B \, \hat{\mathbf{e}}_\beta +
+\lambda_{\perp}^B \, \hat{\mathbf{e}}_\beta^\perp
+\end{aligned}
+\]
+
+where we can expand out as:
+\[
+\begin{aligned}
+&\Big(
+\underbrace{
+\lambda_N^A \, \hat{\mathbf{n}}_A \cdot \frac{d\mathbf{p}_A}{dq}
++ \lambda_f^A \, \hat{\mathbf{t}}_A \cdot \frac{d\mathbf{p}_A}{dq}
++ \lambda_{\parallel}^A \, \hat{\mathbf{e}}_\beta \cdot \frac{d\mathbf{p}_A}{dq}
++ \lambda_{\perp}^A \, \hat{\mathbf{e}}_\beta^\perp \cdot \frac{d\mathbf{p}_A}{dq}
+}_{\mathbf{f}_A \cdot \frac{d\mathbf{p}_A}{dq}} \\[0.8em]
+&\quad
++ \underbrace{
+\lambda_N^B \, \hat{\mathbf{n}}_B \cdot \frac{d\mathbf{p}_B}{dq}
++ \lambda_f^B \, \hat{\mathbf{t}}_B \cdot \frac{d\mathbf{p}_B}{dq}
++ \lambda_{\parallel}^B \, \hat{\mathbf{e}}_\beta \cdot \frac{d\mathbf{p}_B}{dq}
++ \lambda_{\perp}^B \, \hat{\mathbf{e}}_\beta^\perp \cdot \frac{d\mathbf{p}_B}{dq}
+}_{\mathbf{f}_B \cdot \frac{d\mathbf{p}_B}{dq}} \\[0.8em]
+&\quad
++ \mathbf{F}_g \cdot \frac{d\mathbf{r}_G}{dq}
+- m \ddot{\mathbf{r}}_G \cdot \frac{d\mathbf{r}_G}{dq}
+\Big) \delta q = 0
+\end{aligned}
+\]
+
+\begin{itemize}
+  \item[1.] \( \lambda_N^A \, \hat{\mathbf{n}}_A \cdot \frac{d\mathbf{p}_A}{dq} = 0 \)  
+        (Normal force is perpendicular to virtual displacement: does no work)
+
+  \item[2.] \( \lambda_f^A \, \hat{\mathbf{t}}_A \cdot \frac{d\mathbf{p}_A}{dq}
+  = \lambda_f^A \cdot \left\| \frac{d\mathbf{p}_A}{dq} \right\| \),  
+  because \( \hat{\mathbf{t}}_A \parallel \frac{d\mathbf{p}_A}{dq} \)
+
+  \item[3.] \( \left( \lambda_{\parallel}^A \cdot \frac{d\mathbf{p}_A}{dq}
+    + \lambda_{\parallel}^B \cdot \frac{d\mathbf{p}_B}{dq} \right)
+    \cdot \hat{\mathbf{e}}_\beta \)  
+    (Combined contribution of spine-direction forces at A and B)
+
+  \item[4.] \( \left( \lambda_{\perp}^A \cdot \frac{d\mathbf{p}_A}{dq}
+    + \lambda_{\perp}^B \cdot \frac{d\mathbf{p}_B}{dq} \right)
+    \cdot \hat{\mathbf{e}}_\beta^\perp \)  
+    (Combined contribution of perpendicular forces along the direction orthogonal to the spine)
+
+    \item[5.]  % ——B-point friction term
+    \[
+    \boxed{
+    \hat{\mathbf{t}}_B =
+    \frac{1}{\sqrt{1 + \left( h'(x_B) \right)^2}}
+    \begin{bmatrix}
+    1 \\
+    h'(x_B)
+    \end{bmatrix}
+    }, \qquad
+    \boxed{
+    \hat{\mathbf{n}}_B =
+    \frac{1}{\sqrt{1 + \left( h'(x_B) \right)^2}}
+    \begin{bmatrix}
+    - h'(x_B) \\
+    1
+    \end{bmatrix}
+    }.
+    \]
+\end{itemize}
 
 \newpage
 \subsection{Zig-Zag Terrain}
