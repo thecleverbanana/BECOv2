@@ -1,0 +1,324 @@
+\documentclass[10pt]{article}
+
+% --- Encoding & Language ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% --- Math Packages ---
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{siunitx}
+
+% --- Page Layout ---
+\usepackage[margin=0.8in]{geometry}
+\usepackage{setspace}
+\singlespacing
+
+% --- Theorem Environment ---
+\usepackage{amsthm}
+\newtheorem{statement}{Statement}[section]
+\newtheorem{theorem}[statement]{Theorem}
+\newtheorem{assumption}[statement]{Assumption}
+\newtheorem{diagram}[statement]{Diagram}
+\newtheorem{note}[statement]{Note}
+
+% --- Figure & Table ---
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+
+% --- TikZ for Diagrams ---
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing, patterns}
+
+% --- Code Listings ---
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+% --- Title Info ---
+\title{\textbf{Dynamics}}
+\author{Jerry Wu}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+\begin{minipage}[t]{0.65\textwidth}
+Generalized coordinate: \(p_A^x, l_1, l_2, l_3\)
+
+\vspace{0.5em}
+
+Terrain function: \(h(x)\)
+
+\vspace{1em}
+
+\[
+p_B^x \text{ solved from: } (p_B^x - p_A^x)^2 + (h(p_B^x) - h(p_A^x))^2 = \frac{l_2^4}{l_2^2 + (l_3^2 - l_1^2)^2}
+\]
+
+\vspace{1em}
+
+\(\beta \text{ solved from: } \)
+
+\[
+\beta = \arcsin\left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)
+\]
+
+
+\vspace{1em}
+
+\[
+\mathbf{r}_{\mathrm{com}} =
+\begin{bmatrix}
+p_A^x \\
+h(p_A^x)
+\end{bmatrix}
++
+l_1
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
++
+\frac{1}{2} l_2
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
+\]
+
+\begin{align*}
+\dot{\mathbf{r}}_{\text{com}} =\ &
+\begin{bmatrix}
+\dot{p}_A^x \\
+h'(p_A^x) \cdot \dot{p}_A^x
+\end{bmatrix}
++
+\dot{l}_1
+\begin{bmatrix}
+\cos\beta \\
+\sin\beta
+\end{bmatrix}
++
+l_1 \dot{\beta}
+\begin{bmatrix}
+-\sin\beta \\
+\cos\beta
+\end{bmatrix} \\
+&+
+\frac{1}{2} \dot{l}_2
+\begin{bmatrix}
+\sin\beta \\
+-\cos\beta
+\end{bmatrix}
++
+\frac{1}{2} l_2 \dot{\beta}
+\begin{bmatrix}
+\cos\beta \\
+\sin\beta
+\end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\ddot{\mathbf{r}}_{\text{com}} =\ &
+\begin{bmatrix}
+\ddot{p}_A^x \\
+h''(p_A^x)(\dot{p}_A^x)^2 + h'(p_A^x) \cdot \ddot{p}_A^x
+\end{bmatrix} \\
+&+
+\ddot{l}_1
+\begin{bmatrix}
+\cos\beta \\
+\sin\beta
+\end{bmatrix}
++
+2 \dot{l}_1 \dot{\beta}
+\begin{bmatrix}
+-\sin\beta \\
+\cos\beta
+\end{bmatrix} \\
+&+
+l_1 \ddot{\beta}
+\begin{bmatrix}
+-\sin\beta \\
+\cos\beta
+\end{bmatrix}
++
+l_1 (\dot{\beta})^2
+\begin{bmatrix}
+-\cos\beta \\
+-\sin\beta
+\end{bmatrix} \\
+&+
+\frac{1}{2} \ddot{l}_2
+\begin{bmatrix}
+\sin\beta \\
+-\cos\beta
+\end{bmatrix}
++
+\dot{l}_2 \dot{\beta}
+\begin{bmatrix}
+\cos\beta \\
+\sin\beta
+\end{bmatrix} \\
+&+
+\frac{1}{2} l_2 \ddot{\beta}
+\begin{bmatrix}
+\cos\beta \\
+\sin\beta
+\end{bmatrix}
++
+\frac{1}{2} l_2 (\dot{\beta})^2
+\begin{bmatrix}
+-\sin\beta \\
+\cos\beta
+\end{bmatrix}
+\end{align*}
+
+\textbf{Projection Vector: }
+\begin{align*}
+\frac{\partial \mathbf{r}_{\mathrm{com}}}{\partial p_A^x} &= 
+\begin{bmatrix}
+1 \\
+h'(p_A^x)
+\end{bmatrix}
++
+l_1 \frac{d\beta}{dp_A^x}
+\begin{bmatrix}
+- \sin(\beta) \\
+\cos(\beta)
+\end{bmatrix}
++
+\frac{1}{2} l_2 \frac{d\beta}{dp_A^x}
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\frac{\partial \mathbf{r}_{\mathrm{com}}}{\partial l_1} =
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
++
+l_1 \frac{d\beta}{d l_1}
+\begin{bmatrix}
+- \sin(\beta) \\
+\cos(\beta)
+\end{bmatrix}
++
+\frac{1}{2} l_2 \frac{d\beta}{d l_1}
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\frac{\partial \mathbf{r}_{\mathrm{com}}}{\partial l_2} =
+\frac{1}{2}
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
++
+\frac{1}{2} l_2 \frac{d\beta}{d l_2}
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
++
+l_1\frac{d\beta}{d l_2}
+\begin{bmatrix}
+- \sin(\beta) \\
+\cos(\beta)
+\end{bmatrix}
+\end{align*}
+
+\end{minipage}
+\hfill
+\vrule width 0.4pt\relax
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+\textbf{Notation:}
+
+\(l_1\) refers to left leg, \(l_2\) refers to spine, \(l_3\) refers to right leg
+
+\vspace{10em}
+\(\dot{\beta}\) and \(\ddot{\beta}\) can also be derived with the help from computer
+
+\end{minipage}
+
+\newpage
+
+
+\begin{minipage}[t]{0.65\textwidth}
+\begin{align*}
+\frac{\partial \mathbf{r}_{\mathrm{com}}}{\partial l_3} =
+l_1 \cdot \frac{\partial \beta}{\partial l_3}
+\begin{bmatrix}
+- \sin(\beta) \\
+\cos(\beta)
+\end{bmatrix}
++
+\frac{1}{2} l_2 \cdot \frac{\partial \beta}{\partial l_3}
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+\end{align*}
+
+Define the intermediate variable:
+\[
+u := \frac{p_B^x - p_A^x + \cos\beta (l_3 - l_1)}{l_2}
+\]
+
+The partial derivative of $F$ with respect to $\beta$ is:
+\[
+\frac{\partial F}{\partial \beta} = 1 + \frac{\sin\beta (l_3 - l_1)}{l_2 \sqrt{1 - u^2}}
+\]
+
+The partial derivatives of $\beta$ with respect to each parameter are:
+
+\[
+\frac{\partial \beta}{\partial p_A^x}
+= -\frac{1}{l_2 \sqrt{1 - u^2} \cdot \left( \frac{\partial F}{\partial \beta} \right)}
+\]
+
+\[
+\frac{\partial \beta}{\partial l_1}
+= \frac{\cos\beta}{l_2 \sqrt{1 - u^2} \cdot \left( \frac{\partial F}{\partial \beta} \right)}
+\]
+
+\[
+\frac{\partial \beta}{\partial l_3}
+= -\frac{\cos\beta}{l_2 \sqrt{1 - u^2} \cdot \left( \frac{\partial F}{\partial \beta} \right)}
+\]
+
+\[
+\frac{\partial \beta}{\partial l_2}
+= \frac{u}{l_2 \sqrt{1 - u^2} \cdot \left( \frac{\partial F}{\partial \beta} \right)}
+\]
+\end{minipage}
+\hfill
+\vrule width 0.4pt\relax
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+\end{minipage}
+
+
+\end{document}
