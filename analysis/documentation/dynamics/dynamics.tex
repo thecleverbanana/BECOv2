@@ -55,7 +55,6 @@
 \maketitle
 
 \noindent
-\begin{minipage}[t]{0.65\textwidth}
 Generalized coordinate: \(p_A^x, l_1, l_2, l_3\)
 
 \vspace{0.5em}
@@ -73,9 +72,60 @@ p_B^x \text{ solved from: } (p_B^x - p_A^x)^2 + (h(p_B^x) - h(p_A^x))^2 = \frac{
 \(\beta \text{ solved from: } \)
 
 \[
-\beta = \arcsin\left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)
+\omega = \beta = \arcsin\left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)
 \]
 
+\vspace{1em}
+
+\[
+\dot{\omega} = \dot{\beta} =
+\frac{%
+\begin{aligned}
+ &l_{1}\cos\beta\,\dot l_{2}
+ - l_{2}\cos\beta\,\dot l_{1}
+ + l_{2}\cos\beta\,\dot l_{3} \\[2pt]
+ &- l_{2}\dot p_{A_x}
+ + l_{2}\dot p_{B_x}
+ - l_{3}\cos\beta\,\dot l_{2} \\[2pt]
+ &+ p_{A_x}\dot l_{2}
+ - p_{B_x}\dot l_{2}
+\end{aligned}}%
+{\Bigl(
+  \sqrt{\dfrac{-
+    \bigl(l_{1}\cos\beta - l_{3}\cos\beta + p_{A_x} - p_{B_x}\bigr)^{2}
+    + l_{2}^{2}}{\,l_{2}^{2}}}\,l_{2}
+  - l_{1}\sin\beta
+  + l_{3}\sin\beta
+  \Bigr)\,l_{2}}
+\]
+
+\vspace{1em}
+
+\[\ddot{\omega}  = \ddot{\beta} =
+\begin{aligned}
+&\frac{
+\begin{aligned}
+-(l_1 \cos\beta \, \dot{l}_2 - l_2 \cos\beta \, \dot{l}_1 + l_2 \cos\beta \, \dot{l}_3 \\
+- l_2 \dot{pA_x} + l_2 \dot{pB_x} - l_3 \cos\beta \, \dot{l}_2 + pA_x \dot{l}_2 - pB_x \dot{l}_2) \dot{l}_2
+\end{aligned}
+}
+{\left(\sqrt{\frac{-(l_1 \cos\beta - l_3 \cos\beta + pA_x - pB_x)^2 + l_2^2}{l_2^2}} \cdot l_2 - l_1 \sin\beta + l_3 \sin\beta\right) l_2^2} \\
+\\
+&+ 
+\vspace{10pt}
+\frac{
+\begin{aligned}
+&-l_1 \sin\beta \, \dot{\beta} \, \dot{l}_2 + l_1 \cos\beta \, \ddot{l}_2 + l_2 \sin\beta \, \dot{\beta} \, \dot{l}_1\\
+&- l_2 \sin\beta \, \dot{\beta} \, \dot{l}_3 - l_2 \cos\beta \, \ddot{l}_1 + l_2 \cos\beta \, \ddot{l}_3\\
+&- l_2 \ddot{pA_x} + l_2 \ddot{pB_x} + l_3 \sin\beta \, \dot{\beta} \, \dot{l}_2 - l_3 \cos\beta \, \ddot{l}_2
++ pA_x \ddot{l}_2 - pB_x \ddot{l}_2
+\end{aligned}
+}{
+\left(\sqrt{\frac{-(l_1 \cos\beta - l_3 \cos\beta + pA_x - pB_x)^2 + l_2^2}{l_2^2}} \cdot l_2 - l_1 \sin\beta + l_3 \sin\beta\right) l_2
+} \\
+&+ \text{(third term omitted for brevity)}
+\end{aligned}
+\]
 
 \vspace{1em}
 
@@ -189,6 +239,63 @@ l_1 (\dot{\beta})^2
 
 \textbf{Projection Vector: }
 \begin{align*}
+\frac{\partial \beta}{\partial p_A^x} = 
+\frac{1}{\sqrt{1 - \left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2}} 
+\cdot 
+\frac{1}{l_2}
+\cdot 
+\left( 
+    \frac{\partial P_B^x}{\partial P_A^x}
+    - 1
+    -\sin(\beta)(l_3-l_1)\cdot \frac{\partial \beta}{\partial P_A^x}
+\right)
+\end{align*}
+
+\begin{align*}
+\frac{\partial \beta}{\partial l_1} = 
+\frac{1}{\sqrt{1 - \left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2}} 
+\cdot 
+\frac{1}{l_2}
+\cdot 
+\left( 
+  \frac{\partial P_B^x}{\partial l_1}
+  - \sin(\beta)(l_3 - l_1) \cdot \frac{\partial \beta}{\partial l_1}
+  - \cos(\beta)
+\right)
+\end{align*}
+
+\begin{align*}
+\frac{\partial \beta}{\partial l_2} = 
+\frac{1}{\sqrt{1 - \left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2}} 
+\cdot 
+(
+-\frac{1}{l_2^2}
+\left( 
+P_B^x - P_A^x + \cos(\beta)(l_3-l_1)
+\right)
++
+\frac{1}{l_2}
+\left( 
+  \frac{\partial P_B^x}{\partial l_2}
+  - \sin(\beta)(l_3 - l_1) \cdot \frac{\partial \beta}{\partial l_2}
+\right)
+)
+\end{align*}
+
+\begin{align*}
+\frac{\partial \beta}{\partial l_3} = 
+\frac{1}{\sqrt{1 - \left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2}} 
+\cdot 
+\frac{1}{l_2}
+\cdot 
+\left( 
+  \frac{\partial P_B^x}{\partial l_3}
+  - \sin(\beta)(l_3 - l_1) \cdot \frac{\partial \beta}{\partial l_3}
+  + \cos(\beta)
+\right)
+\end{align*}
+
+\begin{align*}
 \frac{\partial \mathbf{r}_{\mathrm{com}}}{\partial p_A^x} &= 
 \begin{bmatrix}
 1 \\
@@ -249,24 +356,6 @@ l_1\frac{d\beta}{d l_2}
 \end{bmatrix}
 \end{align*}
 
-\end{minipage}
-\hfill
-\vrule width 0.4pt\relax
-\hfill
-\begin{minipage}[t]{0.3\textwidth}
-\textbf{Notation:}
-
-\(l_1\) refers to left leg, \(l_2\) refers to spine, \(l_3\) refers to right leg
-
-\vspace{10em}
-\(\dot{\beta}\) and \(\ddot{\beta}\) can also be derived with the help from computer
-
-\end{minipage}
-
-\newpage
-
-
-\begin{minipage}[t]{0.65\textwidth}
 \begin{align*}
 \frac{\partial \mathbf{r}_{\mathrm{com}}}{\partial l_3} =
 l_1 \cdot \frac{\partial \beta}{\partial l_3}
@@ -282,43 +371,12 @@ l_1 \cdot \frac{\partial \beta}{\partial l_3}
 \end{bmatrix}
 \end{align*}
 
-Define the intermediate variable:
+\textbf{d'lambere formula: }
 \[
-u := \frac{p_B^x - p_A^x + \cos\beta (l_3 - l_1)}{l_2}
+\sum_i (F_g - m \mathbf{\ddot{r}_{com}})\delta_i 
++ \sum_i (\tau_{fA} + \tau_{fB} + \tau_{A1} + \tau_{A2} + \tau_{B1} + \tau_{B2} 
+- I \mathbf{\ddot{\omega}})\delta_i = 0
 \]
-
-The partial derivative of $F$ with respect to $\beta$ is:
-\[
-\frac{\partial F}{\partial \beta} = 1 + \frac{\sin\beta (l_3 - l_1)}{l_2 \sqrt{1 - u^2}}
-\]
-
-The partial derivatives of $\beta$ with respect to each parameter are:
-
-\[
-\frac{\partial \beta}{\partial p_A^x}
-= -\frac{1}{l_2 \sqrt{1 - u^2} \cdot \left( \frac{\partial F}{\partial \beta} \right)}
-\]
-
-\[
-\frac{\partial \beta}{\partial l_1}
-= \frac{\cos\beta}{l_2 \sqrt{1 - u^2} \cdot \left( \frac{\partial F}{\partial \beta} \right)}
-\]
-
-\[
-\frac{\partial \beta}{\partial l_3}
-= -\frac{\cos\beta}{l_2 \sqrt{1 - u^2} \cdot \left( \frac{\partial F}{\partial \beta} \right)}
-\]
-
-\[
-\frac{\partial \beta}{\partial l_2}
-= \frac{u}{l_2 \sqrt{1 - u^2} \cdot \left( \frac{\partial F}{\partial \beta} \right)}
-\]
-\end{minipage}
-\hfill
-\vrule width 0.4pt\relax
-\hfill
-\begin{minipage}[t]{0.3\textwidth}
-\end{minipage}
 
 
 \end{document}
