@@ -26,8 +26,6 @@ def solve_B_numeric(xA, yA, xP, yP, H2):
     # fallback if neither valid
     raise ValueError("No valid B found (yB > yP)")
 
-
-
 def compute_com(xA_val, yA_val, xP_val, yP_val, L_spine_val, H2_val,
                 body_height=1.0, relative_x=0.0, relative_y=0.75):
     """
@@ -59,6 +57,50 @@ def compute_com(xA_val, yA_val, xP_val, yP_val, L_spine_val, H2_val,
     # A + 1/2 AB
     x_mid = xA_val + 0.5 * dx
     y_mid = yA_val + 0.5 * dy
+
+    # orthogogal
+    up_x = -uy
+    up_y = ux
+
+    y_offset = relative_y * body_height
+
+    xCOM = x_mid + y_offset * up_x
+    yCOM = y_mid + y_offset * up_y
+
+    return xCOM, yCOM, xA_val, yA_val, xB_val, yB_val, xP_val, yP_val
+
+
+def compute_com_offset(xA_val, yA_val, xP_val, yP_val, L_spine_val, H2_val,
+                body_height=1.0, relative_x=0.0, relative_y=2.0):
+    """
+    Compute the global position of the center of mass (COM) for a rectangular robot.
+
+    Parameters:
+        xA, yA: Coordinates of point A (left contact point)
+        xP, yP: Coordinates of point P (right spine endpoint)
+        L_spine: Length of the robot body (spine length from A to P)
+        beta: Pitch angle (in radians), upward rotation around spine
+        H2: Vertical leg length at point P
+        body_height: Height of the rectangular body
+        relative_x: COM x-position in body frame (0 = center, -0.5 = left end)
+        relative_y: COM y-position in body frame (0 = bottom, 1 = top)
+
+    Returns:
+        xCOM, yCOM: Global coordinates of the COM
+    """
+    # --- use fast numeric method to solve for B ---
+    xB_val, yB_val = solve_B_numeric(xA_val, yA_val, xP_val, yP_val, H2_val)
+
+    # vector AB
+    dx = xB_val - xA_val
+    dy = yB_val - yA_val
+    L = np.hypot(dx, dy)
+    ux = dx / L
+    uy = dy / L
+
+    # A + 1/10 AB
+    x_mid = xA_val + 0.1 * dx
+    y_mid = yA_val + 0.1 * dy
 
     # orthogogal
     up_x = -uy

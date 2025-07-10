@@ -29,58 +29,58 @@ PROTO BECOV2 [
     name IS name
     model "BECOV2"
     description "simulated by Jerry Wu for RoboLAND"
-    # boundingObject Group {
-    #   children [
-    #     Pose {
-    #       translation -0.000430 -0.056750 0.060050
-    #       children [
-    #         Box {
-    #            size 0.070560 0.064650 0.022890
-    #         }
-    #       ]
-    #     }
-    #     Pose {
-    #       translation -0.000430 -0.056810 0.027720
-    #       children [
-    #         Box {
-    #            size 0.023040 0.064650 0.037850
-    #         }
-    #       ]
-    #     }
-    #     Pose {
-    #       translation -0.032620 -0.056810 0.027720
-    #       children [
-    #         Box {
-    #            size 0.006360 0.064650 0.037850
-    #         }
-    #       ]
-    #     }
-    #     Pose {
-    #       translation -0.016750 -0.056810 0.027720
-    #       children [
-    #         Box {
-    #            size 0.006360 0.064650 0.037850
-    #         }
-    #       ]
-    #     }
-    #     Pose {
-    #       translation 0.015590 -0.056810 0.027720
-    #       children [
-    #         Box {
-    #            size 0.006360 0.064650 0.037850
-    #         }
-    #       ]
-    #     }
-    #     Pose {
-    #       translation 0.031460 -0.056810 0.027720
-    #       children [
-    #         Box {
-    #            size 0.006360 0.064650 0.037850
-    #         }
-    #       ]
-    #     }
-    #   ]
-    # }
+    boundingObject Group {
+      children [
+        Pose {
+          translation -0.000430 -0.056750 0.060050
+          children [
+            Box {
+               size 0.070560 0.064650 0.022890
+            }
+          ]
+        }
+        Pose {
+          translation -0.000430 -0.056810 0.027720
+          children [
+            Box {
+               size 0.023040 0.064650 0.037850
+            }
+          ]
+        }
+        Pose {
+          translation -0.032620 -0.056810 0.027720
+          children [
+            Box {
+               size 0.006360 0.064650 0.037850
+            }
+          ]
+        }
+        Pose {
+          translation -0.016750 -0.056810 0.027720
+          children [
+            Box {
+               size 0.006360 0.064650 0.037850
+            }
+          ]
+        }
+        Pose {
+          translation 0.015590 -0.056810 0.027720
+          children [
+            Box {
+               size 0.006360 0.064650 0.037850
+            }
+          ]
+        }
+        Pose {
+          translation 0.031460 -0.056810 0.027720
+          children [
+            Box {
+               size 0.006360 0.064650 0.037850
+            }
+          ]
+        }
+      ]
+    }
     physics Physics {
       density -1
       mass 0.08000
@@ -430,58 +430,58 @@ PROTO BECOV2 [
                 }
               ]
               name "VISUAL_RIGHTBODY_LINK"
-              # boundingObject Group {
-              #   children [
-              #     Pose {
-              #       translation 0.002320 -0.004000 0.001490
-              #       children [
-              #         Box {
-              #            size 0.070560 0.064650 0.022890
-              #         }
-              #       ]
-              #     }
-              #     Pose {
-              #       translation 0.002320 -0.004120 -0.030840
-              #       children [
-              #         Box {
-              #            size 0.023040 0.064650 0.037850
-              #         }
-              #       ]
-              #     }
-              #     Pose {
-              #       translation -0.029880 -0.004120 -0.030840
-              #       children [
-              #         Box {
-              #            size 0.006360 0.064650 0.037850
-              #         }
-              #       ]
-              #     }
-              #     Pose {
-              #       translation -0.014010 -0.004120 -0.030840
-              #       children [
-              #         Box {
-              #            size 0.006360 0.064650 0.037850
-              #         }
-              #       ]
-              #     }
-              #     Pose {
-              #       translation 0.018340 -0.004120 -0.030840
-              #       children [
-              #         Box {
-              #            size 0.006360 0.064650 0.037850
-              #         }
-              #       ]
-              #     }
-              #     Pose {
-              #       translation 0.034210 -0.004120 -0.030840
-              #       children [
-              #         Box {
-              #            size 0.006360 0.064650 0.037850
-              #         }
-              #       ]
-              #     }
-              #   ]
-              # }
+              boundingObject Group {
+                children [
+                  Pose {
+                    translation 0.002320 -0.004000 0.001490
+                    children [
+                      Box {
+                         size 0.070560 0.064650 0.022890
+                      }
+                    ]
+                  }
+                  Pose {
+                    translation 0.002320 -0.004120 -0.030840
+                    children [
+                      Box {
+                         size 0.023040 0.064650 0.037850
+                      }
+                    ]
+                  }
+                  Pose {
+                    translation -0.029880 -0.004120 -0.030840
+                    children [
+                      Box {
+                         size 0.006360 0.064650 0.037850
+                      }
+                    ]
+                  }
+                  Pose {
+                    translation -0.014010 -0.004120 -0.030840
+                    children [
+                      Box {
+                         size 0.006360 0.064650 0.037850
+                      }
+                    ]
+                  }
+                  Pose {
+                    translation 0.018340 -0.004120 -0.030840
+                    children [
+                      Box {
+                         size 0.006360 0.064650 0.037850
+                      }
+                    ]
+                  }
+                  Pose {
+                    translation 0.034210 -0.004120 -0.030840
+                    children [
+                      Box {
+                         size 0.006360 0.064650 0.037850
+                      }
+                    ]
+                  }
+                ]
+              }
               physics Physics {
                 density -1
                 mass 0.07000

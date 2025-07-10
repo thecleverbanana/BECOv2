@@ -10,9 +10,8 @@ Actuator::Actuator(int pwmPin, int feedbackPin, float kp, float kd,
 }
 
 void Actuator::setPosition(float pos) {
-    pos = constrain(pos, 0, pwmMax);
-    int pwmVal = map(pos, 0, pwmMax, 0, 255);  
-    analogWrite(pwmPin, pwmVal);
+    pos = constrain(pos, 0, pwmMax);  
+    analogWrite(pwmPin, pos);
 }
 
 void Actuator::setPosition(float pos, bool closedLoop) {

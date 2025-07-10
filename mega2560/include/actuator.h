@@ -7,7 +7,7 @@ class Actuator {
 public:
     Actuator(int pwmPin, int feedbackPin,
              float kp = 0.3, float kd = 0.01,
-             int pwmMax = 225
+             int pwmMax = 255
         );
 
     float kp, kd;

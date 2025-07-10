@@ -67,6 +67,57 @@ Terrain function: \(h(x)\)
 p_B^x \text{ solved from: } (p_B^x - p_A^x)^2 + (h(p_B^x) - h(p_A^x))^2 = \frac{l_2^4}{l_2^2 + (l_3^2 - l_1^2)^2}
 \]
 
+\[
+\frac{\partial p_B^{x}}{\partial p_A^{x}}
+=
+\frac{(p_B^{x}-p_A^{x}) \;+\;
+      \bigl[h(p_B^{x})-h(p_A^{x})\bigr]\,h'(p_A^{x})}
+     {(p_B^{x}-p_A^{x}) \;+\;
+      \bigl[h(p_B^{x})-h(p_A^{x})\bigr]\,h'(p_B^{x})}
+\]
+
+\[
+\begin{aligned}
+\frac{\partial p_B^{x}}{\partial l_1}
+   &= \frac{
+        2\,l_1\bigl(l_3^{2}-l_1^{2}\bigr)\,l_2^{4}
+      }{
+        \bigl[l_2^{2}+\bigl(l_3^{2}-l_1^{2}\bigr)^{2}\bigr]^{2}\,
+        \big(
+          \bigl(p_B^{x}-p_A^{x}\bigr)
+          +\bigl[\,h(p_B^{x})-h(p_A^{x})\bigr]\,
+          h'(p_B^{x})
+        \big)
+      },
+\\[10pt]
+\frac{\partial p_B^{x}}{\partial l_2}
+   &= \frac{
+        2\,l_2^{3}\bigl[l_2^{2}+\bigl(l_3^{2}-l_1^{2}\bigr)^{2}\bigr]
+        -1\,l_2^{5}
+      }{
+        \bigl[l_2^{2}+\bigl(l_3^{2}-l_1^{2}\bigr)^{2}\bigr]^{2}\,
+        \big(
+          \bigl(p_B^{x}-p_A^{x}\bigr)
+          +\bigl[\,h(p_B^{x})-h(p_A^{x})\bigr]\,
+          h'(p_B^{x})
+        \big)
+      },
+\\[10pt]
+\frac{\partial p_B^{x}}{\partial l_3}
+   &= \frac{
+        2\,l_3\bigl(l_3^{2}-l_1^{2}\bigr)\,l_2^{4}
+      }{
+        \bigl[l_2^{2}+\bigl(l_3^{2}-l_1^{2}\bigr)^{2}\bigr]^{2}\,
+        \big(
+          \bigl(p_B^{x}-p_A^{x}\bigr)
+          +\bigl[\,h(p_B^{x})-h(p_A^{x})\bigr]\,
+          h'(p_B^{x})
+        \big)
+      }.
+\end{aligned}
+\]
+
+
 \vspace{1em}
 
 \(\beta \text{ solved from: } \)
@@ -78,54 +129,45 @@ p_B^x \text{ solved from: } (p_B^x - p_A^x)^2 + (h(p_B^x) - h(p_A^x))^2 = \frac{
 \vspace{1em}
 
 \[
-\dot{\omega} = \dot{\beta} =
-\frac{%
-\begin{aligned}
- &l_{1}\cos\beta\,\dot l_{2}
- - l_{2}\cos\beta\,\dot l_{1}
- + l_{2}\cos\beta\,\dot l_{3} \\[2pt]
- &- l_{2}\dot p_{A_x}
- + l_{2}\dot p_{B_x}
- - l_{3}\cos\beta\,\dot l_{2} \\[2pt]
- &+ p_{A_x}\dot l_{2}
- - p_{B_x}\dot l_{2}
-\end{aligned}}%
-{\Bigl(
-  \sqrt{\dfrac{-
-    \bigl(l_{1}\cos\beta - l_{3}\cos\beta + p_{A_x} - p_{B_x}\bigr)^{2}
-    + l_{2}^{2}}{\,l_{2}^{2}}}\,l_{2}
-  - l_{1}\sin\beta
-  + l_{3}\sin\beta
-  \Bigr)\,l_{2}}
+\dot{\beta} = \frac{
+\dot{p}_B^x - \dot{p}_A^x + \cos\beta (\dot{l}_3 - \dot{l}_1) - \dot{l}_2 \sin\beta
+}{
+l_2 \cos\beta + \sin\beta (l_3 - l_1)
+}
 \]
 
 \vspace{1em}
 
 \[\ddot{\omega}  = \ddot{\beta} =
-\begin{aligned}
-&\frac{
-\begin{aligned}
--(l_1 \cos\beta \, \dot{l}_2 - l_2 \cos\beta \, \dot{l}_1 + l_2 \cos\beta \, \dot{l}_3 \\
-- l_2 \dot{pA_x} + l_2 \dot{pB_x} - l_3 \cos\beta \, \dot{l}_2 + pA_x \dot{l}_2 - pB_x \dot{l}_2) \dot{l}_2
-\end{aligned}
-}
-{\left(\sqrt{\frac{-(l_1 \cos\beta - l_3 \cos\beta + pA_x - pB_x)^2 + l_2^2}{l_2^2}} \cdot l_2 - l_1 \sin\beta + l_3 \sin\beta\right) l_2^2} \\
-\\
-&+ 
-\vspace{10pt}
 \frac{
-\begin{aligned}
-&-l_1 \sin\beta \, \dot{\beta} \, \dot{l}_2 + l_1 \cos\beta \, \ddot{l}_2 + l_2 \sin\beta \, \dot{\beta} \, \dot{l}_1\\
-&- l_2 \sin\beta \, \dot{\beta} \, \dot{l}_3 - l_2 \cos\beta \, \ddot{l}_1 + l_2 \cos\beta \, \ddot{l}_3\\
-&- l_2 \ddot{pA_x} + l_2 \ddot{pB_x} + l_3 \sin\beta \, \dot{\beta} \, \dot{l}_2 - l_3 \cos\beta \, \ddot{l}_2
-+ pA_x \ddot{l}_2 - pB_x \ddot{l}_2
-\end{aligned}
-}{
-\left(\sqrt{\frac{-(l_1 \cos\beta - l_3 \cos\beta + pA_x - pB_x)^2 + l_2^2}{l_2^2}} \cdot l_2 - l_1 \sin\beta + l_3 \sin\beta\right) l_2
-} \\
-&+ \text{(third term omitted for brevity)}
-\end{aligned}
+\dot{N}D
+-
+N\dot{D}
+}{D^{2}}
 \]
+\begin{align}
+N &\;=\;
+    \dot{p}_B^{x}-\dot{p}_A^{x}
+    +\cos\beta\bigl(\dot{l}_{3}-\dot{l}_{1}\bigr)
+    -\dot{l}_{2}\sin\beta,
+\\[4pt]
+D &\;=\;
+    l_{2}\cos\beta
+    +\sin\beta\bigl(l_{3}-l_{1}\bigr),
+\\[4pt]
+\dot{N} &\;=\;
+    \ddot{p}_B^{x}-\ddot{p}_A^{x}
+    -\sin\beta\,\dot{\beta}\bigl(\dot{l}_{3}-\dot{l}_{1}\bigr)
+    +\cos\beta\bigl(\ddot{l}_{3}-\ddot{l}_{1}\bigr)
+    -\ddot{l}_{2}\sin\beta
+    -\dot{l}_{2}\cos\beta\,\dot{\beta},
+\\[4pt]
+\dot{D} &\;=\;
+    \dot{l}_{2}\cos\beta
+    -l_{2}\sin\beta\,\dot{\beta}
+    +\cos\beta\,\dot{\beta}\bigl(l_{3}-l_{1}\bigr)
+    +\sin\beta\bigl(\dot{l}_{3}-\dot{l}_{1}\bigr).
+\end{align}
 
 \vspace{1em}
 
@@ -239,60 +281,37 @@ l_1 (\dot{\beta})^2
 
 \textbf{Projection Vector: }
 \begin{align*}
-\frac{\partial \beta}{\partial p_A^x} = 
-\frac{1}{\sqrt{1 - \left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2}} 
-\cdot 
-\frac{1}{l_2}
-\cdot 
-\left( 
-    \frac{\partial P_B^x}{\partial P_A^x}
-    - 1
-    -\sin(\beta)(l_3-l_1)\cdot \frac{\partial \beta}{\partial P_A^x}
-\right)
+\frac{\partial \beta}{\partial p_A^x}
+= \frac{ \dfrac{1}{l_2} \left( \dfrac{\partial p_B^x}{\partial p_A^x} - 1 \right) }
+{ \sqrt{1 - \left( \dfrac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2 }
++ \dfrac{\sin(\beta)(l_3 - l_1)}{l_2} }
 \end{align*}
 
 \begin{align*}
-\frac{\partial \beta}{\partial l_1} = 
-\frac{1}{\sqrt{1 - \left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2}} 
-\cdot 
-\frac{1}{l_2}
-\cdot 
-\left( 
-  \frac{\partial P_B^x}{\partial l_1}
-  - \sin(\beta)(l_3 - l_1) \cdot \frac{\partial \beta}{\partial l_1}
-  - \cos(\beta)
-\right)
+\frac{\partial \beta}{\partial l_1}
+= \frac{ \dfrac{1}{l_2} \left( \dfrac{\partial p_B^x}{\partial l_1} - \cos(\beta) \right) }
+{ \sqrt{1 - \left( \dfrac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2 } 
++ \dfrac{\sin(\beta)(l_3 - l_1)}{l_2} }
+\end{align*}
+
+
+\begin{align*}
+\frac{\partial \beta}{\partial l_2}
+=
+\frac{
+\dfrac{1}{l_2} \cdot \dfrac{\partial p_B^x}{\partial l_2}
+- \dfrac{1}{l_2^2}(p_B^x - p_A^x + \cos(\beta)(l_3 - l_1))
+}{
+\sqrt{1 - \left( \dfrac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2 }
++ \dfrac{\sin(\beta)(l_3 - l_1)}{l_2}
+}
 \end{align*}
 
 \begin{align*}
-\frac{\partial \beta}{\partial l_2} = 
-\frac{1}{\sqrt{1 - \left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2}} 
-\cdot 
-(
--\frac{1}{l_2^2}
-\left( 
-P_B^x - P_A^x + \cos(\beta)(l_3-l_1)
-\right)
-+
-\frac{1}{l_2}
-\left( 
-  \frac{\partial P_B^x}{\partial l_2}
-  - \sin(\beta)(l_3 - l_1) \cdot \frac{\partial \beta}{\partial l_2}
-\right)
-)
-\end{align*}
-
-\begin{align*}
-\frac{\partial \beta}{\partial l_3} = 
-\frac{1}{\sqrt{1 - \left( \frac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2}} 
-\cdot 
-\frac{1}{l_2}
-\cdot 
-\left( 
-  \frac{\partial P_B^x}{\partial l_3}
-  - \sin(\beta)(l_3 - l_1) \cdot \frac{\partial \beta}{\partial l_3}
-  + \cos(\beta)
-\right)
+\frac{\partial \beta}{\partial l_3}
+= \frac{ \dfrac{1}{l_2} \left( \dfrac{\partial p_B^x}{\partial l_3} + \cos(\beta) \right) }
+{ \sqrt{1 - \left( \dfrac{(p_B^x + \cos(\beta) l_3) - (p_A^x + \cos(\beta) l_1)}{l_2} \right)^2 } 
++ \dfrac{\sin(\beta)(l_3 - l_1)}{l_2} }
 \end{align*}
 
 \begin{align*}
@@ -378,5 +397,234 @@ l_1 \cdot \frac{\partial \beta}{\partial l_3}
 - I \mathbf{\ddot{\omega}})\delta_i = 0
 \]
 
+for torque, we have:
+\[
+\mathbf{r_{A}} = 
+-
+l_1
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+-
+\frac{1}{2} l_2
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
+\]
+
+\[
+\mathbf{r_{B}} = 
+\begin{bmatrix}
+p_B^x \\
+h(p_B^x)
+\end{bmatrix}
+-
+\begin{bmatrix}
+p_A^x \\
+h(p_A^x)
+\end{bmatrix}
+-
+l_1
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+-
+\frac{1}{2} l_2
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
+\]
+
+And:
+\[
+F_g = 
+\begin{bmatrix}
+0 \\
+mg
+\end{bmatrix}
+\]
+
+\[
+\tau_{fA} = 
+(
+-
+l_1
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+-
+\frac{1}{2} l_2
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
+) 
+\cross
+f_A
+\begin{bmatrix}
+  1 \\
+  h'(x_P^x)
+\end{bmatrix}
+\]
+
+\[
+\tau_{A1} = 
+(
+-
+l_1
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+-
+\frac{1}{2} l_2
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
+) 
+\cross
+\lambda_1
+\begin{bmatrix}
+  \cos(\beta) \\
+  \sin(\beta)
+\end{bmatrix}
+=
+-\frac{1}{2}\lambda_1 l_2
+\]
+
+\[
+\tau_{A2} = 
+(
+-
+l_1
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+-
+\frac{1}{2} l_2
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
+) 
+\cross
+\lambda_2
+\begin{bmatrix}
+  \sin(\beta) \\
+  - \cos(\beta)
+\end{bmatrix}
+=
+\lambda_2l_1 
+\]
+
+\[
+\tau_{fB} = 
+(
+\begin{bmatrix}
+p_B^x \\
+h(p_B^x)
+\end{bmatrix}
+-
+\begin{bmatrix}
+p_A^x \\
+h(p_A^x)
+\end{bmatrix}
+-
+l_1
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+-
+\frac{1}{2} l_2
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
+) 
+\cross
+f_A
+\begin{bmatrix}
+  1 \\
+  h'(x_P^x)
+\end{bmatrix}
+\]
+
+\[
+\tau_{B1} = 
+(
+\begin{bmatrix}
+p_B^x \\
+h(p_B^x)
+\end{bmatrix}
+-
+\begin{bmatrix}
+p_A^x \\
+h(p_A^x)
+\end{bmatrix}
+-
+l_1
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+-
+\frac{1}{2} l_2
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
+) 
+\cross
+\lambda_1
+\begin{bmatrix}
+  \cos(\beta) \\
+  \sin(\beta)
+\end{bmatrix}
+=
+\frac{1}{2}\lambda_1 l_2
+\]
+
+\[
+\tau_{B2} = 
+(
+\begin{bmatrix}
+p_B^x \\
+h(p_B^x)
+\end{bmatrix}
+-
+\begin{bmatrix}
+p_A^x \\
+h(p_A^x)
+\end{bmatrix}
+-
+l_1
+\begin{bmatrix}
+\cos(\beta) \\
+\sin(\beta)
+\end{bmatrix}
+-
+\frac{1}{2} l_2
+\begin{bmatrix}
+\sin(\beta) \\
+-\cos(\beta)
+\end{bmatrix}
+) 
+\cross
+\lambda_2
+\begin{bmatrix}
+  \sin(\beta) \\
+  - \cos(\beta)
+\end{bmatrix}
+=
+\lambda_2l_3 
+\]
 
 \end{document}

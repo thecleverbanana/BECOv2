@@ -28,21 +28,21 @@ Solid {
     Shape {
       appearance PBRAppearance {
         baseColor 0.2 0.2 1.0
-        roughness 0.5
+        roughness 0.01
         metalness 0.0
       }
       geometry Mesh {
-        url "../../Blender/Terrain/terrain7/terrain7.obj"
+        url "../../Blender/Terrain/terrain9/terrain9.obj"
       }
     }
   ]
   boundingObject Mesh {
-    url "../../Blender/Terrain/terrain7/terrain7.obj"
+    url "../../Blender/Terrain/terrain9/terrain9.obj"
   }
   physics Physics {
-    mass 10
+    mass 50
   }
-  name "Terrain7"
+  name "Terrain9"
 }
 
 DEF BECOV2_INSTANCE BECOV2 {
